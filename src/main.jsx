@@ -565,32 +565,32 @@ const feederCalculatorRoutes = {
       { role: "HSG-I", offset: null, type: "seniority" }
     ],
 
-    executive: [
-      {
-        role: "Inspector Posts (IP)",
-        serviceAfterPA: 8,
-        type: "executive",
-        note: "8 years qualifying service benchmark"
-      },
-      {
-        role: "Assistant Superintendent of Posts (ASP)",
-        serviceAfterIP: 5,
-        type: "executive",
-        note: "5 years regular service benchmark"
-      },
-      {
-        role: "Postal Service Group 'B'",
-        serviceAfterASP: 3,
-        type: "executive",
-        note: "Route and eligibility dependent"
-      },
-      {
-        role: "JTS — Indian Postal Service Group A",
-        serviceAfterPSB: 5,
-        type: "senior",
-        note: "5 years regular service benchmark"
-      }
-    ]
+    // executive: [
+    //   {
+    //     role: "Inspector Posts (IP)",
+    //     serviceAfterPA: 8,
+    //     type: "executive",
+    //     note: "8 years qualifying service benchmark"
+    //   },
+    //   {
+    //     role: "Assistant Superintendent of Posts (ASP)",
+    //     serviceAfterIP: 5,
+    //     type: "executive",
+    //     note: "5 years regular service benchmark"
+    //   },
+    //   {
+    //     role: "Postal Service Group 'B'",
+    //     serviceAfterASP: 3,
+    //     type: "executive",
+    //     note: "Route and eligibility dependent"
+    //   },
+    //   {
+    //     role: "JTS — Indian Postal Service Group A",
+    //     serviceAfterPSB: 5,
+    //     type: "senior",
+    //     note: "5 years regular service benchmark"
+    //   }
+    // ]
   },
 
   "gds-mts-pa": {
@@ -609,32 +609,32 @@ const feederCalculatorRoutes = {
       { role: "HSG-I", offset: null, type: "seniority" }
     ],
 
-    executive: [
-      {
-        role: "Inspector Posts (IP)",
-        serviceAfterPA: 8,
-        type: "executive",
-        note: "8 years qualifying service benchmark"
-      },
-      {
-        role: "Assistant Superintendent of Posts (ASP)",
-        serviceAfterIP: 5,
-        type: "executive",
-        note: "5 years regular service benchmark"
-      },
-      {
-        role: "Postal Service Group 'B'",
-        serviceAfterASP: 3,
-        type: "executive",
-        note: "Route and eligibility dependent"
-      },
-      {
-        role: "JTS — Indian Postal Service Group A",
-        serviceAfterPSB: 5,
-        type: "senior",
-        note: "5 years regular service benchmark"
-      }
-    ]
+    // executive: [
+    //   {
+    //     role: "Inspector Posts (IP)",
+    //     serviceAfterPA: 8,
+    //     type: "executive",
+    //     note: "8 years qualifying service benchmark"
+    //   },
+    //   {
+    //     role: "Assistant Superintendent of Posts (ASP)",
+    //     serviceAfterIP: 5,
+    //     type: "executive",
+    //     note: "5 years regular service benchmark"
+    //   },
+    //   {
+    //     role: "Postal Service Group 'B'",
+    //     serviceAfterASP: 3,
+    //     type: "executive",
+    //     note: "Route and eligibility dependent"
+    //   },
+    //   {
+    //     role: "JTS — Indian Postal Service Group A",
+    //     serviceAfterPSB: 5,
+    //     type: "senior",
+    //     note: "5 years regular service benchmark"
+    //   }
+    // ]
   },
 
   "gds-postman-pa": {
@@ -698,34 +698,62 @@ const feederCalculatorRoutes = {
       { role: "HSG-I", offset: null, type: "seniority" }
     ],
 
-    executive: [
-      {
-        role: "Inspector Posts (IP)",
-        serviceAfterPA: 8,
-        type: "executive",
-        note: "8 years qualifying service benchmark"
-      },
-      {
-        role: "Assistant Superintendent of Posts (ASP)",
-        serviceAfterIP: 5,
-        type: "executive",
-        note: "5 years regular service benchmark"
-      },
-      {
-        role: "Postal Service Group 'B'",
-        serviceAfterASP: 3,
-        type: "executive",
-        note: "Route and eligibility dependent"
-      },
-      {
-        role: "JTS — Indian Postal Service Group A",
-        serviceAfterPSB: 5,
-        type: "senior",
-        note: "5 years regular service benchmark"
-      }
-    ]
+    // executive: [
+    //   {
+    //     role: "Inspector Posts (IP)",
+    //     serviceAfterPA: 8,
+    //     type: "executive",
+    //     note: "8 years qualifying service benchmark"
+    //   },
+    //   {
+    //     role: "Assistant Superintendent of Posts (ASP)",
+    //     serviceAfterIP: 5,
+    //     type: "executive",
+    //     note: "5 years regular service benchmark"
+    //   },
+    //   {
+    //     role: "Postal Service Group 'B'",
+    //     serviceAfterASP: 3,
+    //     type: "executive",
+    //     note: "Route and eligibility dependent"
+    //   },
+    //   {
+    //     role: "JTS — Indian Postal Service Group A",
+    //     serviceAfterPSB: 5,
+    //     type: "senior",
+    //     note: "5 years regular service benchmark"
+    //   }
+    // ]
   }
 };
+
+const executiveCareerTrack = [
+  {
+    role: "Inspector Posts (IP)",
+    type: "executive",
+    serviceAfterPA: 8,
+    note: "8-year qualifying-service benchmark"
+  },
+
+  {
+    role: "Assistant Superintendent of Posts (ASP)",
+    type: "executive",
+    serviceAfterIP: 5,
+    note: "5-year regular-service benchmark"
+  },
+
+  {
+    role: "SPO / SSRM",
+    type: "seniority",
+    note: "Subject to applicable rules, vacancies, seniority and DPC"
+  },
+
+  {
+    role: "IPoS Group A / JTS onward",
+    type: "senior",
+    note: "Selection / promotion / cadre conditions dependent"
+  }
+];
 const calc = useMemo(() => {
   const base = mode === "age" ? Number(age) : Number(year);
 
@@ -750,39 +778,31 @@ const calc = useMemo(() => {
 
   const paBase = paStage?.offset ?? 0;
 
-  const calculateExecutive = () => {
-    let currentOffset = paBase;
+const calculateExecutive = () => {
+  let currentOffset = paBase;
 
-    return route.executive.map((stage) => {
+  return executiveCareerTrack.map((stage) => {
 
-      if (stage.serviceAfterPA) {
-        currentOffset =
-          paBase + stage.serviceAfterPA;
-      }
+    if (stage.serviceAfterPA) {
+      currentOffset = paBase + stage.serviceAfterPA;
+    }
 
-      if (stage.serviceAfterIP) {
-        currentOffset += stage.serviceAfterIP;
-      }
+    if (stage.serviceAfterIP) {
+      currentOffset += stage.serviceAfterIP;
+    }
 
-      if (stage.serviceAfterASP) {
-        currentOffset += stage.serviceAfterASP;
-      }
+    return {
+      ...stage,
 
-      if (stage.serviceAfterPSB) {
-        currentOffset += stage.serviceAfterPSB;
-      }
+      offset: currentOffset,
 
-      return {
-        ...stage,
-        offset: currentOffset,
-
-        value:
-          mode === "age"
-            ? Math.round((base + currentOffset) * 10) / 10
-            : base + currentOffset
-      };
-    });
-  };
+      value:
+        mode === "age"
+          ? Math.round((base + currentOffset) * 10) / 10
+          : base + currentOffset
+    };
+  });
+};
 
   return {
     routeName: route.name,
@@ -1245,10 +1265,6 @@ const calc = useMemo(() => {
 
         <div className="executive-timeline">
 
-          {calc.executive.map((stage, index) => (
-
-          <div className="executive-timeline">
-
   <div className="executive-rail" />
 
   {calc.executive.map((stage, index) => (
@@ -1277,7 +1293,6 @@ const calc = useMemo(() => {
 
       </div>
 
-
       <div className="executive-content">
 
         <div className="executive-topline">
@@ -1291,27 +1306,16 @@ const calc = useMemo(() => {
               ? "EXECUTIVE"
               : stage.type === "senior"
                 ? "SENIOR LEADERSHIP"
-                : "SENIORITY / SELECTION"}
+                : "SELECTION / SENIORITY"}
           </span>
 
         </div>
 
-
         <h4>{stage.role}</h4>
 
-
         <p>
-          {stage.note ||
-            (
-              stage.type === "executive"
-                ? "Executive progression"
-                : stage.type === "senior"
-                  ? "Senior leadership pathway"
-                  : "Subject to applicable rules"
-            )
-          }
+          {stage.note || "Subject to applicable rules"}
         </p>
-
 
         <div className="executive-age">
 
@@ -1336,11 +1340,6 @@ const calc = useMemo(() => {
   ))}
 
 </div>
-
-          ))}
-
-        </div>
-
 
         <div className="track-note executive-note">
           <Info size={15} />

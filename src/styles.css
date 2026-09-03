@@ -1011,7 +1011,7 @@
 
 /* MOBILE */
 
-@media(max-width:700px) {
+/* @media(max-width:700px) {
 
   .projection-header {
     align-items: flex-start;
@@ -1036,7 +1036,7 @@
     padding: 17px 18px;
   }
 
-}
+} */
 
 /* =====================================================
    SENIORITY — CLEAN STATUS SYSTEM
@@ -1482,7 +1482,7 @@
    MOBILE
 ===================================================== */
 
-@media(max-width:700px) {
+/* @media(max-width:700px) {
 
   .seniority-node-wrap {
     min-width: 112px;
@@ -1523,7 +1523,7 @@
     font-size: 9px;
   }
 
-}
+} */
 
 
 /* =========================================
@@ -1855,7 +1855,7 @@
   line-height: 1.55;
 }
 
-@media(max-width:700px) {
+/* @media(max-width:700px) {
 
   .seniority-road-line {
     left: 24px;
@@ -1895,7 +1895,7 @@
   .seniority-ceiling {
     margin-left: 64px;
   }
-}
+} */
 
 
 /* =====================================================
@@ -3188,4 +3188,328 @@
     animation-iteration-count: 1 !important;
   }
 
+}
+
+
+/* =========================================================
+   MOBILE CALCULATOR — FULLY RESPONSIVE CAREER TIMELINES
+========================================================= */
+
+@media (max-width: 700px) {
+
+  /* Never allow the calculator itself to overflow */
+  .results,
+  .career-projection,
+  .career-track {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+
+  /* -------------------------------------------------------
+     REMOVE OLD 650px HORIZONTAL TIMELINE
+  ------------------------------------------------------- */
+
+  .career-track .career-nodes {
+    min-width: 0 !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+
+  /* -------------------------------------------------------
+     FEEDER + SENIORITY MOBILE TIMELINE
+  ------------------------------------------------------- */
+
+  .feeder-track .career-nodes,
+  .seniority-track .career-nodes {
+    position: relative;
+    padding-left: 10px;
+  }
+
+  .feeder-track .career-node-wrap,
+  .seniority-track .career-node-wrap {
+    width: 100%;
+    min-width: 0;
+
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr);
+
+    align-items: start;
+
+    gap: 14px;
+
+    padding-bottom: 28px;
+  }
+
+
+  /* Circle stays inside the first column */
+
+  .feeder-track .career-node,
+  .seniority-track .career-node {
+    width: 58px;
+    height: 58px;
+
+    margin: 0;
+
+    flex: none;
+  }
+
+
+  /* Information beside the circle */
+
+  .feeder-track .career-node-info,
+  .seniority-track .career-node-info {
+    min-width: 0;
+
+    margin-top: 5px;
+
+    padding-right: 0;
+
+    text-align: left;
+
+    overflow-wrap: anywhere;
+  }
+
+  .feeder-track .career-node-info strong,
+  .seniority-track .career-node-info strong {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .feeder-track .career-node-info small,
+  .seniority-track .career-node-info small {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+
+    margin-top: 5px;
+
+    font-size: 9px;
+    line-height: 1.45;
+  }
+
+
+  /* -------------------------------------------------------
+     VERTICAL CONNECTOR ON MOBILE
+  ------------------------------------------------------- */
+
+  .feeder-track .career-connector,
+  .seniority-track .career-connector {
+    position: absolute;
+
+    left: 29px;
+    top: 58px;
+
+    width: 2px;
+    height: calc(100% - 58px);
+
+    right: auto;
+
+    background: linear-gradient(
+      to bottom,
+      var(--red),
+      rgba(159,32,47,.10)
+    );
+
+    transform-origin: top;
+  }
+
+  .seniority-track .seniority-connector {
+    background: linear-gradient(
+      to bottom,
+      var(--gold),
+      rgba(189,138,50,.10)
+    );
+  }
+
+
+  /* Don't draw a connector after the final node */
+
+  .career-node-wrap:last-child .career-connector {
+    display: none;
+  }
+
+
+  /* -------------------------------------------------------
+     STATUS BADGE — STAYS UNDER THE CIRCLE
+  ------------------------------------------------------- */
+
+  .seniority-node-wrap {
+    grid-template-columns: 62px minmax(0, 1fr) !important;
+  }
+
+  .seniority-node-wrap .career-node {
+    position: relative;
+  }
+
+  .seniority-node-wrap .node-status-badge {
+    position: absolute;
+
+    left: 0;
+    top: 62px;
+
+    width: max-content;
+    max-width: 62px;
+
+    margin: 0;
+
+    font-size: 6.5px;
+
+    white-space: nowrap;
+
+    z-index: 4;
+  }
+
+
+  /* -------------------------------------------------------
+     SENIORITY INFO
+  ------------------------------------------------------- */
+
+  .seniority-node-wrap .career-node-info {
+    margin-top: 3px;
+  }
+
+
+  /* -------------------------------------------------------
+     EXECUTIVE TIMELINE
+  ------------------------------------------------------- */
+
+  .executive-timeline {
+    width: 100%;
+    max-width: 100%;
+
+    overflow: visible;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .executive-rail {
+    left: 28px;
+
+    top: 29px;
+    bottom: 28px;
+  }
+
+  .executive-milestone {
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    grid-template-columns: 56px minmax(0, 1fr);
+
+    gap: 13px;
+  }
+
+  .executive-node-column {
+    width: 56px;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .executive-node {
+    width: 54px;
+    height: 54px;
+  }
+
+  .executive-content {
+    min-width: 0;
+    width: 100%;
+
+    overflow-wrap: anywhere;
+  }
+
+  .executive-content h4 {
+    font-size: 14px;
+    line-height: 1.25;
+  }
+
+  .executive-content p {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+
+  .executive-age {
+    flex-wrap: wrap;
+  }
+
+
+  /* -------------------------------------------------------
+     CALCULATOR DISCLAIMER / FOOTER
+  ------------------------------------------------------- */
+
+  .calculator-disclaimer,
+  .projection-footer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* -------------------------------------------------------
+     VERY SMALL PHONES
+  ------------------------------------------------------- */
+
+  @media (max-width: 390px) {
+
+    .career-track {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .feeder-track .career-node-wrap,
+    .seniority-track .career-node-wrap {
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 11px;
+    }
+
+    .feeder-track .career-node,
+    .seniority-track .career-node {
+      width: 52px;
+      height: 52px;
+    }
+
+    .feeder-track .career-connector,
+    .seniority-track .career-connector {
+      left: 26px;
+      top: 52px;
+    }
+
+    .seniority-node-wrap .node-status-badge {
+      top: 56px;
+    }
+
+    .executive-milestone {
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .executive-rail {
+      left: 26px;
+    }
+
+    .executive-node-column {
+      width: 52px;
+    }
+
+    .executive-node {
+      width: 50px;
+      height: 50px;
+    }
+
+    .career-node-info strong {
+      font-size: 11px;
+    }
+
+    .career-node-info small {
+      font-size: 8px;
+    }
+  }
 }
