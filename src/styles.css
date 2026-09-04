@@ -4545,3 +4545,2224 @@
   }
 
 }
+
+.name-input-wrap input {
+  text-transform: none;
+}
+
+.share-preview {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 95% 0%,
+      rgba(79,70,229,.16),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(255,107,53,.11),
+      transparent 35%
+    ),
+    #fdfcf9;
+}
+
+.share-preview::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(
+      rgba(10,31,68,.10) 1px,
+      transparent 1px
+    );
+
+  background-size: 18px 18px;
+
+  opacity: .18;
+
+  mask-image:
+    linear-gradient(
+      135deg,
+      black,
+      transparent 65%
+    );
+}
+
+.share-preview-person {
+  position: relative;
+
+  margin-top: 16px;
+
+  padding: 15px 16px;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0a1f44,
+      #172e5c
+    );
+
+  color: white;
+
+  box-shadow:
+    0 12px 28px
+    rgba(10,31,68,.18);
+}
+
+.share-preview-person span {
+  display: block;
+
+  color: #aebbd3;
+
+  font-size: 7px;
+
+  font-weight: 800;
+
+  letter-spacing: .15em;
+}
+
+.share-preview-person strong {
+  display: block;
+
+  margin-top: 5px;
+
+  font-family: "Space Grotesk";
+
+  font-size: 21px;
+
+  letter-spacing: -.035em;
+}
+
+.share-career-line {
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 4px;
+
+  margin-top: 18px;
+
+  padding: 12px 6px 8px;
+
+  overflow: hidden;
+}
+
+.share-line-track {
+  position: absolute;
+
+  top: 27px;
+  left: 25px;
+  right: 25px;
+
+  height: 3px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff6b35,
+      #4f46e5,
+      #818cf8
+    );
+}
+
+.share-line-node {
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 44px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+.share-line-node span {
+  width: 30px;
+  height: 30px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #0a1f44;
+
+  color: white;
+
+  border: 3px solid #fffdfa;
+
+  box-shadow:
+    0 0 0 2px #ff6b35;
+}
+
+.share-line-node.executive span {
+  background: #4f46e5;
+
+  box-shadow:
+    0 0 0 2px #818cf8;
+}
+
+.share-line-node small {
+  max-width: 62px;
+
+  text-align: center;
+
+  color: #555e6d;
+
+  font-size: 6px;
+
+  line-height: 1.25;
+
+  font-weight: 800;
+}
+
+.share-line-break {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  transform: translateX(-50%);
+
+  padding: 3px 7px;
+
+  border-radius: 999px;
+
+  background: #ecebfa;
+
+  color: #5949bb;
+
+  font-size: 6px;
+
+  font-weight: 800;
+
+  letter-spacing: .08em;
+}
+
+.share-mini-stage small {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #8b8f98;
+
+  font-size: 6px;
+
+  font-weight: 800;
+}
+
+.share-profile-stats {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 8px;
+
+  margin-top: 9px;
+}
+
+.share-profile-stats > div {
+  padding: 10px;
+
+  border-radius: 11px;
+
+  background: rgba(255,255,255,.72);
+
+  border: 1px solid #e4e1da;
+}
+
+.share-profile-stats span {
+  display: block;
+
+  font-size: 6px;
+
+  font-weight: 800;
+
+  color: #858b96;
+
+  letter-spacing: .08em;
+}
+
+.share-profile-stats strong {
+  display: block;
+
+  margin-top: 4px;
+
+  font-family: "Space Grotesk";
+
+  font-size: 11px;
+
+  color: #0a1f44;
+}
+
+
+/* ================================
+   PREMIUM SHARE CAREER MODAL
+================================ */
+
+.share-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(5, 15, 35, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: shareOverlayIn 0.25s ease-out;
+}
+
+.share-modal {
+  width: min(920px, 100%);
+  max-height: min(92vh, 900px);
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 28px;
+  padding: 22px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(79, 70, 229, 0.18), transparent 32%),
+    radial-gradient(circle at 100% 100%, rgba(255, 107, 53, 0.14), transparent 30%),
+    rgba(10, 31, 68, 0.94);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  animation: shareModalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.share-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.share-modal-eyebrow {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #818cf8;
+}
+
+.share-modal-header h3 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.share-modal-header p {
+  margin: 7px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+}
+
+.share-modal-close {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.share-modal-close:hover {
+  transform: rotate(90deg);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.share-modal .share-preview {
+  width: 100%;
+  margin: 0;
+  animation: sharePreviewIn 0.5s 0.08s both cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.share-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.share-modal-actions .share-action {
+  flex: 1 1 150px;
+  min-height: 44px;
+}
+
+.share-modal-message {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  animation: shareMessageIn 0.2s ease-out;
+}
+
+@keyframes shareOverlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shareModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes sharePreviewIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shareMessageIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .share-modal-overlay {
+    align-items: flex-end;
+    padding: 10px;
+  }
+
+  .share-modal {
+    max-height: 94vh;
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  .share-modal-header h3 {
+    font-size: 20px;
+  }
+
+  .share-modal-header p {
+    font-size: 12px;
+  }
+
+  .share-modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .share-modal-actions .share-action {
+    min-width: 0;
+  }
+}
+@media (min-width: 900px) {
+  .calc-layout .results {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .calc-layout .results > * {
+    width: 100%;
+    max-width: none;
+  }
+
+  .calc-layout .projection-card,
+  .calc-layout .projection,
+  .calc-layout .executive-track,
+  .calc-layout .projection-panel {
+    width: 100%;
+    max-width: none;
+  }
+}
+/* =========================================
+   POSTPATH CAREER JOURNEY ANIMATION
+========================================= */
+
+.career-journey-animation {
+  position: relative;
+  min-height: 420px;
+  margin-top: 28px;
+  padding: 30px 24px 24px;
+  overflow: hidden;
+  border: 1px solid rgba(120, 45, 60, 0.12);
+  border-radius: 28px;
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      rgba(150, 30, 55, 0.10),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 82% 75%,
+      rgba(70, 70, 130, 0.08),
+      transparent 35%
+    ),
+    rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 18px 50px rgba(40, 24, 28, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* subtle grid */
+.career-journey-animation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.24;
+  background-image:
+    linear-gradient(
+      rgba(100, 90, 110, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(100, 90, 110, 0.05) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+/* glowing horizon */
+.career-journey-animation::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 112px;
+  height: 90px;
+  background: radial-gradient(
+    ellipse,
+    rgba(155, 34, 55, 0.12),
+    transparent 70%
+  );
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+.journey-copy {
+  position: absolute;
+  left: 28px;
+  top: 28px;
+  z-index: 5;
+}
+
+.journey-copy span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #9b2639;
+}
+
+.journey-copy strong {
+  display: block;
+  max-width: 260px;
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: #18151a;
+}
+
+.journey-copy small {
+  display: block;
+  margin-top: 9px;
+  color: rgba(35, 30, 35, 0.5);
+  font-size: 11px;
+}
+
+/* -------------------------
+   ROAD
+------------------------- */
+
+.journey-road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 74px;
+  height: 2px;
+  background: rgba(80, 65, 72, 0.14);
+}
+
+.journey-road span {
+  position: absolute;
+  inset: -1px 0;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 18px,
+      rgba(155, 34, 55, 0.30) 18px 28px,
+      transparent 28px 46px
+    );
+  animation: roadMove 2.2s linear infinite;
+}
+
+/* -------------------------
+   BIKE
+------------------------- */
+
+.journey-bike {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: 78px;
+  width: 145px;
+  height: 105px;
+  transform: translateX(-50%);
+  animation: bikeFloat 2.4s ease-in-out infinite;
+}
+
+/* wheels */
+.bike-wheel {
+  position: absolute;
+  bottom: 0;
+  width: 42px;
+  height: 42px;
+  border: 3px solid #25212a;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.30);
+  box-shadow:
+    0 0 0 5px rgba(155, 34, 55, 0.04);
+}
+
+.bike-wheel::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(37, 33, 42, 0.25);
+  border-radius: 50%;
+  animation: wheelSpin 1.5s linear infinite;
+}
+
+.wheel-left {
+  left: 10px;
+}
+
+.wheel-right {
+  right: 10px;
+}
+
+/* bike frame */
+.bike-body {
+  position: absolute;
+  left: 39px;
+  bottom: 20px;
+  width: 67px;
+  height: 42px;
+  border-bottom: 4px solid #9b2639;
+  border-left: 4px solid #9b2639;
+  border-right: 4px solid #9b2639;
+  transform: skew(-14deg);
+}
+
+/* handlebars */
+.bike-handle {
+  position: absolute;
+  right: 18px;
+  bottom: 55px;
+  width: 20px;
+  height: 17px;
+  border-top: 4px solid #25212a;
+  border-right: 4px solid #25212a;
+  border-radius: 0 8px 0 0;
+  transform: rotate(-15deg);
+}
+
+.bike-handle::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: -8px;
+  width: 12px;
+  height: 4px;
+  border-radius: 4px;
+  background: #25212a;
+}
+
+/* seat */
+.bike-seat {
+  position: absolute;
+  left: 57px;
+  bottom: 62px;
+  width: 23px;
+  height: 5px;
+  border-radius: 4px;
+  background: #25212a;
+}
+
+/* pedal */
+.bike-pedal {
+  position: absolute;
+  left: 66px;
+  bottom: 29px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #25212a;
+  border-radius: 50%;
+  animation: pedalSpin 1s linear infinite;
+}
+
+.bike-pedal::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  width: 10px;
+  height: 2px;
+  background: #25212a;
+  transform-origin: left center;
+}
+
+/* delivery box */
+.bike-box {
+  position: absolute;
+  top: 23px;
+  left: 57px;
+  width: 42px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #a82d42, #7f1e31);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 8px 18px rgba(125, 24, 46, 0.24);
+  transform: rotate(-3deg);
+}
+
+/* courier */
+.bike-person {
+  position: absolute;
+  left: 49px;
+  top: 3px;
+  width: 48px;
+  height: 61px;
+}
+
+.person-head {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #d59c7c;
+  box-shadow:
+    0 -4px 0 -1px #25212a;
+}
+
+.person-body {
+  position: absolute;
+  left: 11px;
+  top: 18px;
+  width: 29px;
+  height: 38px;
+  border-radius: 14px 14px 5px 5px;
+  background: #9b2639;
+  transform: skew(-5deg);
+}
+
+.person-body::after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  bottom: 0;
+  width: 7px;
+  height: 25px;
+  background: #25212a;
+  border-radius: 5px;
+  transform: rotate(18deg);
+  transform-origin: top;
+}
+
+/* -------------------------
+   FLYING MAIL
+------------------------- */
+
+.journey-mail {
+  position: absolute;
+  z-index: 3;
+  font-size: 18px;
+  color: #9b2639;
+  opacity: 0;
+}
+
+.mail-one {
+  left: 25%;
+  top: 42%;
+  animation: mailFlyOne 3.8s ease-in-out infinite;
+}
+
+.mail-two {
+  left: 40%;
+  top: 32%;
+  animation: mailFlyTwo 4.6s ease-in-out infinite 1s;
+}
+
+.mail-three {
+  left: 58%;
+  top: 44%;
+  animation: mailFlyThree 4.2s ease-in-out infinite 1.8s;
+}
+
+/* -------------------------
+   ORBITS / DECORATION
+------------------------- */
+
+.journey-orbit {
+  position: absolute;
+  border: 1px solid rgba(155, 34, 55, 0.10);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit-one {
+  width: 170px;
+  height: 170px;
+  right: -55px;
+  top: 20px;
+  animation: orbitPulse 5s ease-in-out infinite;
+}
+
+.orbit-two {
+  width: 110px;
+  height: 110px;
+  right: -20px;
+  top: 50px;
+  border-color: rgba(80, 75, 140, 0.10);
+  animation: orbitPulse 4s ease-in-out infinite reverse;
+}
+
+/* -------------------------
+   ANIMATIONS
+------------------------- */
+
+@keyframes bikeFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+@keyframes wheelSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pedalSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes roadMove {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-46px);
+  }
+}
+
+@keyframes mailFlyOne {
+  0% {
+    opacity: 0;
+    transform: translate(0, 15px) rotate(-12deg);
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(80px, -42px) rotate(10deg);
+  }
+}
+
+@keyframes mailFlyTwo {
+  0% {
+    opacity: 0;
+    transform: translate(0, 18px) rotate(8deg);
+  }
+
+  20% {
+    opacity: 0.7;
+  }
+
+  80% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(60px, -55px) rotate(-8deg);
+  }
+}
+
+@keyframes mailFlyThree {
+  0% {
+    opacity: 0;
+    transform: translate(0, 12px) rotate(-6deg);
+  }
+
+  20% {
+    opacity: 0.7;
+  }
+
+  80% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(65px, -38px) rotate(12deg);
+  }
+}
+
+@keyframes orbitPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+/* -----------------------------------------
+   MOBILE
+----------------------------------------- */
+
+@media (max-width: 899px) {
+  .career-journey-animation {
+    min-height: 350px;
+    margin-top: 22px;
+  }
+
+  .journey-copy strong {
+    font-size: 16px;
+  }
+
+  .journey-bike {
+    transform: translateX(-50%) scale(0.9);
+  }
+}
+
+@media (max-width: 600px) {
+  .career-journey-animation {
+    min-height: 320px;
+    padding: 24px 18px;
+  }
+
+  .journey-copy {
+    left: 20px;
+    top: 22px;
+  }
+
+  .journey-copy strong {
+    max-width: 220px;
+    font-size: 15px;
+  }
+
+  .journey-copy small {
+    font-size: 10px;
+  }
+
+  .journey-bike {
+    bottom: 68px;
+    transform: translateX(-50%) scale(0.82);
+  }
+
+  .journey-road {
+    bottom: 64px;
+  }
+}
+/* =========================================
+   PREMIUM CAREER SNAPSHOT
+========================================= */
+
+.career-snapshot {
+  position: relative;
+  margin-top: 14px;
+  padding: 20px;
+  border: 1px solid rgba(120, 35, 55, 0.12);
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(155, 38, 57, 0.10),
+      transparent 42%
+    ),
+    rgba(255, 255, 255, 0.34);
+  box-shadow:
+    0 14px 35px rgba(40, 20, 25, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+}
+
+.career-snapshot::before {
+  content: "";
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  width: 170px;
+  height: 170px;
+  border: 1px solid rgba(155, 38, 57, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.snapshot-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.snapshot-kicker {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #9b2639;
+}
+
+.snapshot-top h3 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #17151a;
+}
+
+.snapshot-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(155, 38, 57, 0.14);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.42);
+  color: #9b2639;
+}
+
+.snapshot-route {
+  position: relative;
+  z-index: 1;
+  margin-top: 20px;
+  padding: 14px 15px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.snapshot-route span,
+.snapshot-stat span,
+.snapshot-next span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: rgba(35, 29, 35, 0.48);
+}
+
+.snapshot-route strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #1b1820;
+}
+
+.snapshot-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.snapshot-stat {
+  padding: 13px 14px;
+  border: 1px solid rgba(60, 45, 65, 0.07);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.snapshot-stat strong {
+  display: block;
+  font-size: 17px;
+  line-height: 1;
+  color: #1b1820;
+}
+
+.snapshot-divider {
+  height: 1px;
+  margin: 17px 0;
+  background: rgba(60, 45, 65, 0.10);
+}
+
+.snapshot-next {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 2px 0;
+}
+
+.snapshot-next strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #1b1820;
+}
+
+.snapshot-arrow {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(155, 38, 57, 0.08);
+  color: #9b2639;
+  font-size: 17px;
+}
+
+.snapshot-share-btn {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 18px;
+  border: 1px solid rgba(155, 38, 57, 0.2);
+  border-radius: 13px;
+  background: #9b2639;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow:
+    0 8px 20px rgba(155, 38, 57, 0.18);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.snapshot-share-btn:hover {
+  transform: translateY(-2px);
+  background: #861f31;
+  box-shadow:
+    0 12px 26px rgba(155, 38, 57, 0.24);
+}
+
+.snapshot-share-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   POSTPATH — SIMPLE PREMIUM JOURNEY
+========================================================= */
+
+.postpath-mini-animation {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e9ddd2 0%,
+      #f1e3d4 55%,
+      #d5b99f 100%
+    );
+
+  border: 1px solid rgba(88, 52, 48, .10);
+
+  box-shadow:
+    0 18px 45px rgba(49, 31, 30, .08),
+    inset 0 1px 0 rgba(255,255,255,.6);
+
+  isolation: isolate;
+}
+
+/* =========================================================
+   SKY
+========================================================= */
+
+.mini-sky {
+  position: absolute;
+  inset: 0;
+}
+
+.mini-sun {
+  position: absolute;
+  top: 35px;
+  right: 45px;
+
+  width: 54px;
+  height: 54px;
+
+  border-radius: 50%;
+
+  background: #efc477;
+
+  box-shadow:
+    0 0 0 12px rgba(239,196,119,.08),
+    0 0 35px rgba(239,196,119,.22);
+
+  animation:
+    miniSun 5s ease-in-out infinite;
+}
+
+.mini-cloud {
+  position: absolute;
+
+  width: 80px;
+  height: 20px;
+
+  border-radius: 30px;
+
+  background: rgba(255,255,255,.42);
+}
+
+.mini-cloud::before,
+.mini-cloud::after {
+  content: "";
+  position: absolute;
+
+  border-radius: 50%;
+  background: inherit;
+}
+
+.mini-cloud::before {
+  width: 30px;
+  height: 30px;
+
+  left: 12px;
+  top: -13px;
+}
+
+.mini-cloud::after {
+  width: 34px;
+  height: 34px;
+
+  right: 10px;
+  top: -16px;
+}
+
+.cloud-a {
+  top: 65px;
+  left: 50px;
+
+  animation:
+    miniCloudA 12s ease-in-out infinite;
+}
+
+.cloud-b {
+  top: 100px;
+  left: 220px;
+
+  transform: scale(.65);
+
+  opacity: .45;
+
+  animation:
+    miniCloudB 15s ease-in-out infinite;
+}
+
+/* =========================================================
+   HILLS
+========================================================= */
+
+.mini-hill {
+  position: absolute;
+  bottom: 103px;
+
+  width: 240px;
+  height: 90px;
+
+  border-radius: 50% 50% 0 0;
+
+  background: #aa9383;
+
+  opacity: .28;
+}
+
+.hill-1 {
+  left: -65px;
+}
+
+.hill-2 {
+  right: -60px;
+
+  transform: scale(.8);
+}
+
+/* =========================================================
+   TREE
+========================================================= */
+
+.mini-tree {
+  position: absolute;
+
+  left: 25px;
+  bottom: 70px;
+
+  width: 94px;
+  height: 170px;
+
+  z-index: 3;
+}
+
+.tree-trunk {
+  position: absolute;
+
+  left: 39px;
+  bottom: 0;
+
+  width: 17px;
+  height: 100px;
+
+  border-radius: 10px;
+
+  background: #6e5145;
+}
+
+.tree-crown {
+  position: absolute;
+
+  left: -5px;
+  top: 8px;
+
+  width: 97px;
+  height: 97px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      #87967c 0,
+      #687c61 55%,
+      #4d6249 100%
+    );
+
+  box-shadow:
+    30px 8px 0 -16px #5e7457,
+    -18px 17px 0 -15px #71856a;
+
+  animation:
+    treeBreathe 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   HOUSE
+========================================================= */
+
+.mini-house {
+  position: absolute;
+
+  right: 28px;
+  bottom: 69px;
+
+  width: 145px;
+  height: 128px;
+
+  z-index: 4;
+}
+
+.house-wall {
+  position: absolute;
+
+  bottom: 0;
+  left: 9px;
+
+  width: 127px;
+  height: 82px;
+
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d7baa0,
+      #ba9479
+    );
+}
+
+.house-roof {
+  position: absolute;
+
+  left: 0;
+  top: 10px;
+
+  width: 145px;
+  height: 58px;
+
+  background: #86364a;
+
+  clip-path:
+    polygon(
+      50% 0,
+      100% 100%,
+      0 100%
+    );
+}
+
+.house-door {
+  position: absolute;
+
+  left: 54px;
+  bottom: 0;
+
+  width: 34px;
+  height: 56px;
+
+  border-radius: 5px 5px 0 0;
+
+  background: #735247;
+}
+
+.house-window {
+  position: absolute;
+
+  left: 19px;
+  bottom: 38px;
+
+  width: 28px;
+  height: 25px;
+
+  border: 4px solid #735247;
+
+  background: #9db1b0;
+}
+
+/* =========================================================
+   GROUND
+========================================================= */
+
+.mini-ground {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 74px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #c3a287,
+      #ab856d
+    );
+
+  z-index: 5;
+}
+
+.mini-path {
+  position: absolute;
+
+  top: 11px;
+  left: 0;
+
+  width: 73%;
+  height: 63px;
+
+  background: rgba(231,201,170,.42);
+
+  clip-path:
+    polygon(
+      0 16%,
+      100% 34%,
+      100% 100%,
+      0 100%
+    );
+}
+
+/* =========================================================
+   POSTMAN
+========================================================= */
+
+.mini-postman {
+  position: absolute;
+
+  left: 0;
+  bottom: 68px;
+
+  width: 85px;
+  height: 154px;
+
+  z-index: 10;
+
+  animation:
+    miniPostman
+    7s
+    cubic-bezier(.55,0,.3,1)
+    infinite;
+}
+
+/* head */
+
+.mini-head {
+  position: absolute;
+
+  left: 28px;
+  top: 1px;
+
+  width: 30px;
+  height: 31px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dfa47f,
+      #ad735e
+    );
+}
+
+.mini-head i {
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
+
+  left: 9px;
+  top: 13px;
+
+  background: #302628;
+
+  box-shadow:
+    10px 0 0 #302628;
+}
+
+/* cap */
+
+.mini-cap {
+  position: absolute;
+
+  left: 24px;
+  top: -4px;
+
+  width: 38px;
+  height: 14px;
+
+  border-radius: 12px 12px 4px 4px;
+
+  background: #922f43;
+}
+
+/* body */
+
+.mini-body {
+  position: absolute;
+
+  left: 18px;
+  top: 31px;
+
+  width: 45px;
+  height: 68px;
+
+  border-radius: 15px 15px 7px 7px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #b74a5b,
+      #8d2e42
+    );
+}
+
+.mini-body b {
+  position: absolute;
+
+  left: 13px;
+  top: 23px;
+
+  font-size: 7px;
+  font-weight: 900;
+
+  color: rgba(255,255,255,.72);
+}
+
+/* arms */
+
+.mini-arm {
+  position: absolute;
+
+  top: 41px;
+
+  width: 10px;
+  height: 52px;
+
+  border-radius: 10px;
+
+  background: #963247;
+
+  transform-origin: top center;
+}
+
+.arm-back {
+  left: 10px;
+
+  animation:
+    armBack
+    .42s
+    ease-in-out
+    infinite alternate;
+}
+
+.arm-front {
+  left: 60px;
+
+  animation:
+    armFront
+    .42s
+    ease-in-out
+    infinite alternate;
+}
+
+/* legs */
+
+.mini-leg {
+  position: absolute;
+
+  top: 91px;
+
+  width: 13px;
+  height: 58px;
+
+  border-radius: 10px;
+
+  background: #302d31;
+
+  transform-origin: top center;
+}
+
+.leg-left {
+  left: 24px;
+
+  animation:
+    legLeft
+    .42s
+    ease-in-out
+    infinite alternate;
+}
+
+.leg-right {
+  left: 46px;
+
+  animation:
+    legRight
+    .42s
+    ease-in-out
+    infinite alternate;
+}
+
+/* bag */
+
+.mini-bag {
+  position: absolute;
+
+  left: 62px;
+  top: 52px;
+
+  width: 34px;
+  height: 49px;
+
+  border-radius: 6px 7px 9px 8px;
+
+  background: #702133;
+
+  animation:
+    bagSwing
+    .5s
+    ease-in-out
+    infinite alternate;
+}
+
+.mini-bag b {
+  position: absolute;
+
+  left: 12px;
+  top: 18px;
+
+  font-size: 11px;
+
+  color: rgba(255,255,255,.7);
+}
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+.mini-letter {
+  position: absolute;
+
+  left: 0;
+  bottom: 204px;
+
+  width: 48px;
+  height: 34px;
+
+  border-radius: 3px;
+
+  background: #fffdf6;
+
+  box-shadow:
+    0 7px 18px rgba(45,27,28,.16);
+
+  z-index: 12;
+
+  opacity: 0;
+
+  animation:
+    miniLetter
+    7s
+    cubic-bezier(.55,0,.3,1)
+    infinite;
+}
+
+.mini-letter::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      35deg,
+      transparent 48%,
+      #ded2c2 49%,
+      transparent 51%
+    );
+}
+
+.mini-letter span {
+  position: absolute;
+
+  left: 8px;
+  bottom: 5px;
+
+  font-size: 5px;
+
+  font-weight: 900;
+
+  letter-spacing: .08em;
+
+  color: #963247;
+}
+
+/* =========================================================
+   MAILBOX
+========================================================= */
+
+.mini-mailbox {
+  position: absolute;
+
+  right: 205px;
+  bottom: 71px;
+
+  width: 28px;
+  height: 40px;
+
+  border-radius: 4px;
+
+  background: #8a3548;
+
+  z-index: 8;
+}
+
+.mini-mailbox::before {
+  content: "";
+
+  position: absolute;
+
+  left: -3px;
+  top: -10px;
+
+  width: 34px;
+  height: 17px;
+
+  border-radius: 17px 17px 4px 4px;
+
+  background: #9a3c4e;
+}
+
+.mini-mailbox::after {
+  content: "";
+
+  position: absolute;
+
+  left: 6px;
+  top: 13px;
+
+  width: 16px;
+  height: 3px;
+
+  border-radius: 3px;
+
+  background: rgba(255,255,255,.42);
+}
+
+.mini-mailbox span {
+  position: absolute;
+
+  left: 11px;
+  bottom: -25px;
+
+  width: 5px;
+  height: 28px;
+
+  background: #735247;
+}
+
+/* =========================================================
+   GLOW
+========================================================= */
+
+.mini-glow {
+  position: absolute;
+
+  right: 190px;
+  bottom: 105px;
+
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+
+  background: rgba(248,199,113,.32);
+
+  filter: blur(20px);
+
+  opacity: 0;
+
+  z-index: 7;
+
+  animation:
+    mailboxGlow
+    7s
+    ease-in-out
+    infinite;
+}
+
+/* =========================================================
+   CAPTION
+========================================================= */
+
+.mini-caption {
+  position: absolute;
+
+  left: 16px;
+  bottom: 15px;
+
+  z-index: 30;
+
+  padding: 8px 11px;
+
+  border-radius: 10px;
+
+  background: rgba(39,28,29,.28);
+
+  backdrop-filter: blur(10px);
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  animation:
+    captionFade
+    7s
+    ease-in-out
+    infinite;
+}
+
+.mini-caption span {
+  font-size: 6px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  opacity: .62;
+}
+
+.mini-caption strong {
+  font-size: 9px;
+  font-weight: 600;
+  opacity: .9;
+}
+
+/* =========================================================
+   POSTMAN PATH
+========================================================= */
+
+@keyframes miniPostman {
+
+  0% {
+    transform:
+      translateX(-115px)
+      scale(.82);
+  }
+
+  15% {
+    transform:
+      translateX(-35px)
+      scale(.87);
+  }
+
+  31% {
+    transform:
+      translateX(55px)
+      scale(.93);
+  }
+
+  42% {
+    transform:
+      translateX(120px)
+      scale(.97);
+  }
+
+  49%,
+  61% {
+    transform:
+      translateX(137px)
+      scale(.98);
+  }
+
+  73% {
+    transform:
+      translateX(205px)
+      scale(.95);
+  }
+
+  87% {
+    transform:
+      translateX(310px)
+      scale(.90);
+  }
+
+  100% {
+    transform:
+      translateX(430px)
+      scale(.83);
+  }
+}
+
+/* =========================================================
+   LETTER MOVEMENT
+========================================================= */
+
+@keyframes miniLetter {
+
+  0%,
+  42% {
+    opacity: 0;
+
+    transform:
+      translate(175px, 72px)
+      rotate(8deg)
+      scale(.6);
+  }
+
+  47% {
+    opacity: 1;
+
+    transform:
+      translate(128px, 58px)
+      rotate(4deg)
+      scale(.75);
+  }
+
+  53% {
+    opacity: 1;
+
+    transform:
+      translate(82px, 47px)
+      rotate(0deg)
+      scale(.88);
+  }
+
+  59% {
+    opacity: 1;
+
+    transform:
+      translate(46px, 39px)
+      rotate(-2deg)
+      scale(1);
+  }
+
+  64% {
+    opacity: 0;
+
+    transform:
+      translate(26px, 35px)
+      rotate(-4deg)
+      scale(.9);
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   WALK CYCLE
+========================================================= */
+
+@keyframes legLeft {
+
+  from {
+    transform: rotate(14deg);
+  }
+
+  to {
+    transform: rotate(-14deg);
+  }
+}
+
+@keyframes legRight {
+
+  from {
+    transform: rotate(-14deg);
+  }
+
+  to {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes armBack {
+
+  from {
+    transform: rotate(12deg);
+  }
+
+  to {
+    transform: rotate(-12deg);
+  }
+}
+
+@keyframes armFront {
+
+  from {
+    transform: rotate(-12deg);
+  }
+
+  to {
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes bagSwing {
+
+  from {
+    transform: rotate(-3deg);
+  }
+
+  to {
+    transform: rotate(4deg);
+  }
+}
+
+/* =========================================================
+   ENVIRONMENT
+========================================================= */
+
+@keyframes miniSun {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes miniCloudA {
+
+  0%,
+  100% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(30px);
+  }
+}
+
+@keyframes miniCloudB {
+
+  0%,
+  100% {
+    transform: translateX(20px);
+  }
+
+  50% {
+    transform: translateX(-25px);
+  }
+}
+
+@keyframes treeBreathe {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(1.5deg) translateX(2px);
+  }
+}
+
+/* =========================================================
+   MAILBOX MOMENT
+========================================================= */
+
+@keyframes mailboxGlow {
+
+  0%,
+  57% {
+    opacity: 0;
+    transform: scale(.6);
+  }
+
+  64% {
+    opacity: .45;
+    transform: scale(1);
+  }
+
+  70% {
+    opacity: .2;
+    transform: scale(1.18);
+  }
+
+  77%,
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+/* =========================================================
+   CAPTION
+========================================================= */
+
+@keyframes captionFade {
+
+  0%,
+  8% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  14%,
+  86% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  94%,
+  100% {
+    opacity: 0;
+  }
+}

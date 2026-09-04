@@ -34,81 +34,118 @@ import html2canvas from "html2canvas";
 
 const trackA = [
   {
-    id:"gds",
-    index:"00",
-    role:"Gramin Dak Sevak",
-    short:"GDS",
-    level:"Starting point",
-    route:"Starting point",
-    service:"Starting point",
-    body:"The common starting point. From here, multiple departmental routes can open depending on eligibility, vacancies and the applicable examination rules.",
-    tone:"origin"
+    id: "gds",
+    index: "00",
+    role: "Gramin Dak Sevak",
+    short: "GDS",
+    level: "Starting point",
+    route: "Starting point",
+    service: "Starting point",
+    body: "The common starting point. From here, multiple departmental routes can open depending on eligibility, vacancies and the applicable examination rules.",
+    tone: "origin",
   },
   {
-    id:"pa",
-    index:"01",
-    role:"Postal Assistant / Sorting Assistant",
-    short:"PA / SA",
-    level:"Pay Level 4",
-    route:"LGO / Competitive Examination",
-    service:"Direct GDS route: 8 years regular GDS service under the applicable rules",
-    body:"The main destination for the feeder routes below. PA/SA opens the route toward Inspector Posts and the executive/administrative line.",
-    tone:"red"
+    id: "pa",
+    index: "01",
+    role: "Postal Assistant / Sorting Assistant",
+    short: "PA / SA",
+    level: "Pay Level 4",
+    route: "LGO / Competitive Examination",
+    service:
+      "Direct GDS route: 8 years regular GDS service under the applicable rules",
+    body: "The main destination for the feeder routes below. PA/SA opens the route toward Inspector Posts and the executive/administrative line.",
+    tone: "red",
   },
   {
-    id:"ip",
-    index:"02",
-    role:"Inspector Posts",
-    short:"IP",
-    level:"Pay Level 7 · Group B",
-    route:"Inspector Posts competitive exam (LDCE)",
-    service:"Qualifying regular PA/SA service under the applicable recruitment rules",
-    body:"Commands a Postal Sub-Division — inspecting, auditing and enforcing discipline across a cluster of Branch and Sub Offices.",
-    tone:"gold"
+    id: "ip",
+    index: "02",
+    role: "Inspector Posts",
+    short: "IP",
+    level: "Pay Level 7 · Group B",
+    route: "Inspector Posts competitive exam (LDCE)",
+    service:
+      "Qualifying regular PA/SA service under the applicable recruitment rules",
+    body: "Commands a Postal Sub-Division — inspecting, auditing and enforcing discipline across a cluster of Branch and Sub Offices.",
+    tone: "gold",
   },
   {
-    id:"asp",
-    index:"03",
-    role:"Assistant Superintendent of Posts",
-    short:"ASP",
-    level:"Pay Level 8 · Group B",
-    route:"Seniority + Departmental Promotion Committee (DPC)",
-    service:"Applicable IP service requirement",
-    body:"Sub-divisional administration; second-in-command for divisional operations.",
-    tone:"gold"
+    id: "asp",
+    index: "03",
+    role: "Assistant Superintendent of Posts",
+    short: "ASP",
+    level: "Pay Level 8 · Group B",
+    route: "Seniority + Departmental Promotion Committee (DPC)",
+    service: "Applicable IP service requirement",
+    body: "Sub-divisional administration; second-in-command for divisional operations.",
+    tone: "gold",
   },
   {
-    id:"spo",
-    index:"04",
-    role:"Superintendent of Post Offices / SSRM",
-    short:"SPO / SSRM",
-    level:"Pay Level 9 · Group B · Gazetted",
-    route:"PS Group 'B' departmental exam (LDCE)",
-    service:"Applicable cumulative IP + ASP service requirement",
-    body:"Divisional Head — full operational, financial and disciplinary authority over an entire postal division.",
-    tone:"red",
-    featured:true
+    id: "spo",
+    index: "04",
+    role: "Superintendent of Post Offices / SSRM",
+    short: "SPO / SSRM",
+    level: "Pay Level 9 · Group B · Gazetted",
+    route: "PS Group 'B' departmental exam (LDCE)",
+    service: "Applicable cumulative IP + ASP service requirement",
+    body: "Divisional Head — full operational, financial and disciplinary authority over an entire postal division.",
+    tone: "red",
+    featured: true,
   },
   {
-    id:"ipos",
-    index:"05",
-    role:"IPoS Group A",
-    short:"IPoS",
-    level:"Group A",
-    route:"Selection / induction pathway",
-    service:"Selection-based induction",
-    body:"Regional and senior leadership pathway, including Director Postal Services and Postmaster General trajectories.",
-    tone:"violet",
-    final:true
-  }
+    id: "ipos",
+    index: "05",
+    role: "IPoS Group A",
+    short: "IPoS",
+    level: "Group A",
+    route: "Selection / induction pathway",
+    service: "Selection-based induction",
+    body: "Regional and senior leadership pathway, including Director Postal Services and Postmaster General trajectories.",
+    tone: "violet",
+    final: true,
+  },
 ];
 
 const trackB = [
-  {id:"b-pa", index:"01", role:"Postal Assistant (PA)", level:"Entry point", service:"Entry point", body:"The common starting point for the general operational seniority line."},
-  {id:"lsg", index:"02", role:"Lower Selection Grade", level:"Pay Level 5", service:"After 5 years as PA", body:"A single unified supervisory grade — no sub-levels."},
-  {id:"hsg2", index:"03", role:"Higher Selection Grade II", level:"Pay Level 6", service:"After 6 years in LSG", body:'Promotion depends on a "Fit" declaration from the circle’s DPC.'},
-  {id:"hsg1", index:"04", role:"Higher Selection Grade I", level:"Pay Level 7", service:"After 5 years in HSG-II", body:"Chief/Head Postmaster of a major urban Head Post Office. No written exam or LDCE required."},
-  {id:"nfg", index:"05", role:"HSG-I Non-Functional Grade", level:"Pay Level 8", service:"Automatically after 2 years in HSG-I", body:"A higher non-functional grade on the operational seniority line."}
+  {
+    id: "b-pa",
+    index: "01",
+    role: "Postal Assistant (PA)",
+    level: "Entry point",
+    service: "Entry point",
+    body: "The common starting point for the general operational seniority line.",
+  },
+  {
+    id: "lsg",
+    index: "02",
+    role: "Lower Selection Grade",
+    level: "Pay Level 5",
+    service: "After 5 years as PA",
+    body: "A single unified supervisory grade — no sub-levels.",
+  },
+  {
+    id: "hsg2",
+    index: "03",
+    role: "Higher Selection Grade II",
+    level: "Pay Level 6",
+    service: "After 6 years in LSG",
+    body: 'Promotion depends on a "Fit" declaration from the circle’s DPC.',
+  },
+  {
+    id: "hsg1",
+    index: "04",
+    role: "Higher Selection Grade I",
+    level: "Pay Level 7",
+    service: "After 5 years in HSG-II",
+    body: "Chief/Head Postmaster of a major urban Head Post Office. No written exam or LDCE required.",
+  },
+  {
+    id: "nfg",
+    index: "05",
+    role: "HSG-I Non-Functional Grade",
+    level: "Pay Level 8",
+    service: "Automatically after 2 years in HSG-I",
+    body: "A higher non-functional grade on the operational seniority line.",
+  },
 ];
 
 const feederRoutes = [
@@ -121,15 +158,17 @@ const feederRoutes = [
       {
         role: "GDS",
         time: "Year 0",
-        description: "Starting point"
+        description: "Starting point",
       },
       {
         role: "PA / SA",
         time: "Year 8",
-        description: "Competitive / departmental route subject to applicable rules"
-      }
+        description:
+          "Competitive / departmental route subject to applicable rules",
+      },
     ],
-    summary: "The straightest GDS-to-PA route: remain in GDS and become eligible for PA/SA after the applicable qualifying service."
+    summary:
+      "The straightest GDS-to-PA route: remain in GDS and become eligible for PA/SA after the applicable qualifying service.",
   },
   {
     id: "gds-mts-pa",
@@ -140,20 +179,21 @@ const feederRoutes = [
       {
         role: "GDS",
         time: "Year 0",
-        description: "Starting point"
+        description: "Starting point",
       },
       {
         role: "MTS",
         time: "Year 3",
-        description: "GDS → MTS examination / recruitment route"
+        description: "GDS → MTS examination / recruitment route",
       },
       {
         role: "PA / SA",
         time: "Year 8*",
-        description: "MTS → PA/SA route"
-      }
+        description: "MTS → PA/SA route",
+      },
     ],
-    summary: "Move into MTS first, then progress toward PA/SA. The exact eligibility calculation depends on the service counted under the applicable recruitment rules."
+    summary:
+      "Move into MTS first, then progress toward PA/SA. The exact eligibility calculation depends on the service counted under the applicable recruitment rules.",
   },
   {
     id: "gds-postman-pa",
@@ -164,20 +204,21 @@ const feederRoutes = [
       {
         role: "GDS",
         time: "Year 0",
-        description: "Starting point"
+        description: "Starting point",
       },
       {
         role: "Postman",
         time: "Year 5",
-        description: "GDS → Postman / Mail Guard examination route"
+        description: "GDS → Postman / Mail Guard examination route",
       },
       {
         role: "PA / SA",
         time: "Year 8*",
-        description: "Postman → PA/SA route"
-      }
+        description: "Postman → PA/SA route",
+      },
     ],
-    summary: "Move from GDS into Postman first, then become eligible for the PA/SA route after the applicable service requirement."
+    summary:
+      "Move from GDS into Postman first, then become eligible for the PA/SA route after the applicable service requirement.",
   },
   {
     id: "gds-mts-postman-pa",
@@ -188,53 +229,69 @@ const feederRoutes = [
       {
         role: "GDS",
         time: "Year 0",
-        description: "Starting point"
+        description: "Starting point",
       },
       {
         role: "MTS",
         time: "Year 3",
-        description: "GDS → MTS"
+        description: "GDS → MTS",
       },
       {
         role: "Postman",
         time: "Year 6",
-        description: "MTS → Postman"
+        description: "MTS → Postman",
       },
       {
         role: "PA / SA",
         time: "Year 9*",
-        description: "Postman → PA/SA"
-      }
+        description: "Postman → PA/SA",
+      },
     ],
-    summary: "A longer feeder route where an official moves through both MTS and Postman before entering PA/SA."
-  }
+    summary:
+      "A longer feeder route where an official moves through both MTS and Postman before entering PA/SA.",
+  },
 ];
 
 const rules = [
   {
-    title:"The “Bypass Cadres” Rule",
-    icon:Zap,
-    body:"A GDS can jump directly to PA via the LGO exam after a qualifying period of service, skipping the intermediate MTS and Postman cadres. Unfilled PA vacancies go first to existing MTS/Postmen who cleared the same exam. Alternative early exits from GDS: the MTS exam (eligible after 3 years) or the Postman exam (eligible after 5 years)."
+    title: "The “Bypass Cadres” Rule",
+    icon: Zap,
+    body: "A GDS can jump directly to PA via the LGO exam after a qualifying period of service, skipping the intermediate MTS and Postman cadres. Unfilled PA vacancies go first to existing MTS/Postmen who cleared the same exam. Alternative early exits from GDS: the MTS exam (eligible after 3 years) or the Postman exam (eligible after 5 years).",
   },
   {
-    title:"Seniority-cum-Fitness",
-    icon:ShieldCheck,
-    body:'This governs exam-free promotions (LSG → HSG-II → HSG-I). Three gates: an actual sanctioned vacancy, the past 5 years of APAR ratings clearing the benchmark (“Good”/“Very Good”), and a clean vigilance record. DPCs may occasionally relax wait-times during staffing shortages.'
+    title: "Seniority-cum-Fitness",
+    icon: ShieldCheck,
+    body: "This governs exam-free promotions (LSG → HSG-II → HSG-I). Three gates: an actual sanctioned vacancy, the past 5 years of APAR ratings clearing the benchmark (“Good”/“Very Good”), and a clean vigilance record. DPCs may occasionally relax wait-times during staffing shortages.",
   },
   {
-    title:"SPM vs BPM",
-    icon:Landmark,
-    body:"Branch Postmaster (BPM) heads a rural Branch Office; part-time, extra-departmental, hired on 10th-grade merit. Sub Postmaster (SPM) heads an urban Sub-Post Office; full-time, permanent, typically assigned 3–5 years into the PA cadre."
-  }
+    title: "SPM vs BPM",
+    icon: Landmark,
+    body: "Branch Postmaster (BPM) heads a rural Branch Office; part-time, extra-departmental, hired on 10th-grade merit. Sub Postmaster (SPM) heads an urban Sub-Post Office; full-time, permanent, typically assigned 3–5 years into the PA cadre.",
+  },
 ];
 
 const strategy = [
-  ["01","Technical leverage","India Post is scaling IPPB, parcel tracking, cybersecurity and data systems; technical capability can help with infrastructure-oriented assignments."],
-  ["02","Build the base","Treat the GDS-to-PA window as a dedicated study block for Postal Manuals Vols. I–VIII and financial handbooks."],
-  ["03","First-attempt LGO","A first-attempt LGO clear is the highest-leverage early milestone for the roadmap."],
-  ["04","The pivot","The Inspector Posts exam is the key pivot from routine operations into the executive/administrative line."]
+  [
+    "01",
+    "Technical leverage",
+    "India Post is scaling IPPB, parcel tracking, cybersecurity and data systems; technical capability can help with infrastructure-oriented assignments.",
+  ],
+  [
+    "02",
+    "Build the base",
+    "Treat the GDS-to-PA window as a dedicated study block for Postal Manuals Vols. I–VIII and financial handbooks.",
+  ],
+  [
+    "03",
+    "First-attempt LGO",
+    "A first-attempt LGO clear is the highest-leverage early milestone for the roadmap.",
+  ],
+  [
+    "04",
+    "The pivot",
+    "The Inspector Posts exam is the key pivot from routine operations into the executive/administrative line.",
+  ],
 ];
-
 
 function Preloader() {
   const [visible, setVisible] = React.useState(true);
@@ -259,11 +316,9 @@ function Preloader() {
 
   return (
     <div className={`preloader ${exiting ? "preloader-exit" : ""}`}>
-
       <div className="preloader-grid"></div>
 
       <div className="preloader-content">
-
         {/* BRAND */}
         <div className="preloader-brand">
           <span className="preloader-logo">
@@ -275,19 +330,15 @@ function Preloader() {
           </span>
         </div>
 
-
         {/* SCENE */}
         <div className="postal-scene">
-
           <div className="scene-glow"></div>
 
           {/* CLOCK */}
           <div className="loading-clock">
-
             <div className="clock-ring"></div>
 
             <div className="clock-face">
-
               <span className="clock-mark mark-12"></span>
               <span className="clock-mark mark-3"></span>
               <span className="clock-mark mark-6"></span>
@@ -297,33 +348,23 @@ function Preloader() {
               <span className="clock-hand minute-hand"></span>
 
               <span className="clock-center"></span>
-
             </div>
 
-            <div className="clock-label">
-              YOUR JOURNEY
-            </div>
-
+            <div className="clock-label">YOUR JOURNEY</div>
           </div>
-
 
           {/* ROAD */}
           <div className="postal-road">
-
             <div className="road-track"></div>
 
             <div className="road-dashes"></div>
-
           </div>
-
 
           {/* POSTMAN BICYCLE */}
           <div className="courier">
-
             <div className="courier-shadow"></div>
 
             <div className="courier-body">
-
               {/* MAIL BAG */}
               <div className="mail-bag">
                 <span></span>
@@ -344,13 +385,10 @@ function Preloader() {
               {/* LEGS */}
               <div className="courier-leg leg-front"></div>
               <div className="courier-leg leg-back"></div>
-
             </div>
-
 
             {/* BICYCLE */}
             <div className="bicycle">
-
               <div className="wheel wheel-front">
                 <div className="wheel-inner"></div>
               </div>
@@ -365,27 +403,19 @@ function Preloader() {
               <div className="bike-handle"></div>
               <div className="bike-seat"></div>
               <div className="bike-pedal"></div>
-
             </div>
-
 
             {/* LETTERS FLYING */}
             <div className="mail-trail">
-
               <span className="mail mail-1">✉</span>
               <span className="mail mail-2">✉</span>
               <span className="mail mail-3">✉</span>
-
             </div>
-
           </div>
-
         </div>
-
 
         {/* TEXT */}
         <div className="loader-copy">
-
           <div className="loader-status">
             <span className="status-pulse"></span>
             ROUTING YOUR CAREER MAP
@@ -396,43 +426,50 @@ function Preloader() {
             <span> career route.</span>
           </h1>
 
-          <p>
-            Mapping the journey from GDS to the next milestone.
-          </p>
-
+          <p>Mapping the journey from GDS to the next milestone.</p>
         </div>
-
 
         {/* PROGRESS */}
         <div className="loader-progress">
-
           <div className="progress-track">
             <div className="progress-fill"></div>
           </div>
 
           <div className="progress-meta">
             <span>POSTPATH SYSTEM</span>
-            <span>LOADING <b>...</b></span>
+            <span>
+              LOADING <b>...</b>
+            </span>
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 }
 
-function Reveal({children, className=""}) {
+function Reveal({ children, className = "" }) {
   const ref = useRef(null);
-  const [show,setShow] = useState(false);
+  const [show, setShow] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([entry]) => { if(entry.isIntersecting){setShow(true);io.disconnect();}}, {threshold:.12});
-    io.observe(el); return () => io.disconnect();
-  },[]);
-  return <div ref={ref} className={`reveal ${show?"visible":""} ${className}`}>{children}</div>
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.12 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <div ref={ref} className={`reveal ${show ? "visible" : ""} ${className}`}>
+      {children}
+    </div>
+  );
 }
 
 function FeederRoutes() {
@@ -443,7 +480,7 @@ function FeederRoutes() {
       <div className="feeder-header">
         <div>
           <div className="section-kicker">
-            <Route size={16}/>
+            <Route size={16} />
             BEFORE PA / SA
           </div>
 
@@ -452,15 +489,15 @@ function FeederRoutes() {
           </h2>
 
           <p>
-            GDS does not have to follow only one route into PA/SA.
-            These are the major progression patterns to keep visible.
+            GDS does not have to follow only one route into PA/SA. These are the
+            major progression patterns to keep visible.
           </p>
         </div>
       </div>
 
       <div className="feeder-grid">
         <div className="feeder-tabs">
-          {feederRoutes.map(route => (
+          {feederRoutes.map((route) => (
             <button
               key={route.id}
               className={active === route.id ? "active" : ""}
@@ -475,10 +512,9 @@ function FeederRoutes() {
 
         <div className="feeder-visual">
           {feederRoutes
-            .filter(route => route.id === active)
-            .map(route => (
+            .filter((route) => route.id === active)
+            .map((route) => (
               <div key={route.id} className="feeder-route-card">
-
                 <div className="feeder-route-title">
                   <span className={`route-badge ${route.color}`}>
                     {route.badge}
@@ -499,15 +535,13 @@ function FeederRoutes() {
                         </span>
 
                         {index !== route.steps.length - 1 && (
-                          <span className="feeder-connector"/>
+                          <span className="feeder-connector" />
                         )}
                       </div>
 
                       <div className="feeder-step-content">
                         <div>
-                          <span className="feeder-time">
-                            {step.time}
-                          </span>
+                          <span className="feeder-time">{step.time}</span>
 
                           <h4>{step.role}</h4>
 
@@ -519,31 +553,38 @@ function FeederRoutes() {
                 </div>
 
                 <div className="feeder-note">
-                  <Info size={16}/>
+                  <Info size={16} />
                   <span>{route.summary}</span>
                 </div>
-
               </div>
             ))}
         </div>
       </div>
 
       <div className="feeder-footnote">
-        * Service eligibility and examination conditions can change by
-        vacancy year, recruitment rules and Department of Posts orders.
-        The 2026 Postman/Mail Guard vacancy year has a one-year relaxation,
-        so the displayed years should be treated as roadmap examples,
-        not permanent eligibility guarantees.
+        * Service eligibility and examination conditions can change by vacancy
+        year, recruitment rules and Department of Posts orders. The 2026
+        Postman/Mail Guard vacancy year has a one-year relaxation, so the
+        displayed years should be treated as roadmap examples, not permanent
+        eligibility guarantees.
       </div>
     </Reveal>
   );
 }
 
-function StageCard({item, open, onOpen}) {
+function StageCard({ item, open, onOpen }) {
   return (
-    <Reveal className={`stage-wrap ${item.featured?"featured":""} ${item.final?"final":""}`}>
-      <div className="route-dot"><span>{item.index}</span></div>
-      <button className={`stage-card ${open?"open":""}`} onClick={onOpen} aria-expanded={open}>
+    <Reveal
+      className={`stage-wrap ${item.featured ? "featured" : ""} ${item.final ? "final" : ""}`}
+    >
+      <div className="route-dot">
+        <span>{item.index}</span>
+      </div>
+      <button
+        className={`stage-card ${open ? "open" : ""}`}
+        onClick={onOpen}
+        aria-expanded={open}
+      >
         <div className="stage-top">
           <div>
             <div className="eyebrow">{item.short}</div>
@@ -552,29 +593,40 @@ function StageCard({item, open, onOpen}) {
           <div className={`level ${item.tone}`}>{item.level}</div>
         </div>
         <div className="stage-meta">
-          <div><Route size={15}/><span>{item.route}</span></div>
-          <div><Clock3 size={15}/><span>{item.service}</span></div>
+          <div>
+            <Route size={15} />
+            <span>{item.route}</span>
+          </div>
+          <div>
+            <Clock3 size={15} />
+            <span>{item.service}</span>
+          </div>
         </div>
-        <div className={`stage-detail ${open?"show":""}`}>
+        <div className={`stage-detail ${open ? "show" : ""}`}>
           <div className="detail-line"></div>
           <p>{item.body}</p>
         </div>
-        <div className="expand">{open ? <X size={17}/> : <ChevronDown size={17}/>} {open?"Close":"Explore stage"}</div>
+        <div className="expand">
+          {open ? <X size={17} /> : <ChevronDown size={17} />}{" "}
+          {open ? "Close" : "Explore stage"}
+        </div>
       </button>
     </Reveal>
-  )
+  );
 }
 
-function App(){
-  const [track,setTrack] = useState("A");
-  const [open,setOpen] = useState("pa");
-  const [mobileNav,setMobileNav] = useState(false);
-  const [age,setAge] = useState("");
-  const [year,setYear] = useState("");
-  const [mode,setMode] = useState("age");
+function App() {
+  const [track, setTrack] = useState("A");
+  const [open, setOpen] = useState("pa");
+  const [mobileNav, setMobileNav] = useState(false);
+  const [age, setAge] = useState("");
+  const [year, setYear] = useState("");
+  const [mode, setMode] = useState("age");
   const [calculatorRoute, setCalculatorRoute] = useState("direct-pa");
   const [shareMessage, setShareMessage] = useState("");
+  const [shareModalOpen, setShareModalOpen] = useState(false);
   const shareCardRef = useRef(null);
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -583,6 +635,7 @@ function App(){
     const sharedAge = params.get("age");
     const sharedYear = params.get("year");
     const sharedRoute = params.get("route");
+    const sharedName = params.get("name");
 
     if (sharedMode === "age" || sharedMode === "year") {
       setMode(sharedMode);
@@ -599,313 +652,319 @@ function App(){
     if (sharedRoute && feederCalculatorRoutes[sharedRoute]) {
       setCalculatorRoute(sharedRoute);
     }
+
+    if (sharedName) {
+      setUserName(sharedName);
+    }
   }, []);
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
 
-const feederCalculatorRoutes = {
-  "direct-pa": {
-    name: "Direct GDS → PA / SA",
+    params.set("mode", mode);
+    params.set("age", age);
+    params.set("year", year);
+    params.set("route", calculatorRoute);
+    params.set("name", userName.trim());
 
-    feeder: [
-      { role: "GDS", offset: 0, type: "feeder" },
-      { role: "PA / SA", offset: 8, type: "entry" }
-    ],
+    window.history.replaceState(
+      {},
+      "",
+      `${window.location.pathname}?${params.toString()}`,
+    );
+  }, [mode, age, year, calculatorRoute, userName]);
+  const feederCalculatorRoutes = {
+    "direct-pa": {
+      name: "Direct GDS → PA / SA",
 
-    seniority: [
-      { role: "PA / SA", offset: 8, type: "entry" },
-      { role: "LSG", offset: null, type: "seniority" },
-      { role: "HSG-II", offset: null, type: "seniority" },
-      { role: "HSG-I", offset: null, type: "seniority" }
-    ],
+      feeder: [
+        { role: "GDS", offset: 0, type: "feeder" },
+        { role: "PA / SA", offset: 8, type: "entry" },
+      ],
 
-    // executive: [
-    //   {
-    //     role: "Inspector Posts (IP)",
-    //     serviceAfterPA: 8,
-    //     type: "executive",
-    //     note: "8 years qualifying service benchmark"
-    //   },
-    //   {
-    //     role: "Assistant Superintendent of Posts (ASP)",
-    //     serviceAfterIP: 5,
-    //     type: "executive",
-    //     note: "5 years regular service benchmark"
-    //   },
-    //   {
-    //     role: "Postal Service Group 'B'",
-    //     serviceAfterASP: 3,
-    //     type: "executive",
-    //     note: "Route and eligibility dependent"
-    //   },
-    //   {
-    //     role: "JTS — Indian Postal Service Group A",
-    //     serviceAfterPSB: 5,
-    //     type: "senior",
-    //     note: "5 years regular service benchmark"
-    //   }
-    // ]
-  },
+      seniority: [
+        { role: "PA / SA", offset: 8, type: "entry" },
+        { role: "LSG", offset: null, type: "seniority" },
+        { role: "HSG-II", offset: null, type: "seniority" },
+        { role: "HSG-I", offset: null, type: "seniority" },
+      ],
 
-  "gds-mts-pa": {
-    name: "GDS → MTS → PA / SA",
+      // executive: [
+      //   {
+      //     role: "Inspector Posts (IP)",
+      //     serviceAfterPA: 8,
+      //     type: "executive",
+      //     note: "8 years qualifying service benchmark"
+      //   },
+      //   {
+      //     role: "Assistant Superintendent of Posts (ASP)",
+      //     serviceAfterIP: 5,
+      //     type: "executive",
+      //     note: "5 years regular service benchmark"
+      //   },
+      //   {
+      //     role: "Postal Service Group 'B'",
+      //     serviceAfterASP: 3,
+      //     type: "executive",
+      //     note: "Route and eligibility dependent"
+      //   },
+      //   {
+      //     role: "JTS — Indian Postal Service Group A",
+      //     serviceAfterPSB: 5,
+      //     type: "senior",
+      //     note: "5 years regular service benchmark"
+      //   }
+      // ]
+    },
 
-    feeder: [
-      { role: "GDS", offset: 0, type: "feeder" },
-      { role: "MTS", offset: 3, type: "feeder" },
-      { role: "PA / SA", offset: 8, type: "entry" }
-    ],
+    "gds-mts-pa": {
+      name: "GDS → MTS → PA / SA",
 
-    seniority: [
-      { role: "PA / SA", offset: 8, type: "entry" },
-      { role: "LSG", offset: null, type: "seniority" },
-      { role: "HSG-II", offset: null, type: "seniority" },
-      { role: "HSG-I", offset: null, type: "seniority" }
-    ],
+      feeder: [
+        { role: "GDS", offset: 0, type: "feeder" },
+        { role: "MTS", offset: 3, type: "feeder" },
+        { role: "PA / SA", offset: 8, type: "entry" },
+      ],
 
-    // executive: [
-    //   {
-    //     role: "Inspector Posts (IP)",
-    //     serviceAfterPA: 8,
-    //     type: "executive",
-    //     note: "8 years qualifying service benchmark"
-    //   },
-    //   {
-    //     role: "Assistant Superintendent of Posts (ASP)",
-    //     serviceAfterIP: 5,
-    //     type: "executive",
-    //     note: "5 years regular service benchmark"
-    //   },
-    //   {
-    //     role: "Postal Service Group 'B'",
-    //     serviceAfterASP: 3,
-    //     type: "executive",
-    //     note: "Route and eligibility dependent"
-    //   },
-    //   {
-    //     role: "JTS — Indian Postal Service Group A",
-    //     serviceAfterPSB: 5,
-    //     type: "senior",
-    //     note: "5 years regular service benchmark"
-    //   }
-    // ]
-  },
+      seniority: [
+        { role: "PA / SA", offset: 8, type: "entry" },
+        { role: "LSG", offset: null, type: "seniority" },
+        { role: "HSG-II", offset: null, type: "seniority" },
+        { role: "HSG-I", offset: null, type: "seniority" },
+      ],
 
-  "gds-postman-pa": {
-    name: "GDS → Postman → PA / SA",
+      // executive: [
+      //   {
+      //     role: "Inspector Posts (IP)",
+      //     serviceAfterPA: 8,
+      //     type: "executive",
+      //     note: "8 years qualifying service benchmark"
+      //   },
+      //   {
+      //     role: "Assistant Superintendent of Posts (ASP)",
+      //     serviceAfterIP: 5,
+      //     type: "executive",
+      //     note: "5 years regular service benchmark"
+      //   },
+      //   {
+      //     role: "Postal Service Group 'B'",
+      //     serviceAfterASP: 3,
+      //     type: "executive",
+      //     note: "Route and eligibility dependent"
+      //   },
+      //   {
+      //     role: "JTS — Indian Postal Service Group A",
+      //     serviceAfterPSB: 5,
+      //     type: "senior",
+      //     note: "5 years regular service benchmark"
+      //   }
+      // ]
+    },
 
-    feeder: [
-      { role: "GDS", offset: 0, type: "feeder" },
-      { role: "Postman", offset: 5, type: "feeder" },
-      { role: "PA / SA", offset: 8, type: "entry" }
-    ],
+    "gds-postman-pa": {
+      name: "GDS → Postman → PA / SA",
 
-    seniority: [
-      { role: "PA / SA", offset: 8, type: "entry" },
-      { role: "LSG", offset: null, type: "seniority" },
-      { role: "HSG-II", offset: null, type: "seniority" },
-      { role: "HSG-I", offset: null, type: "seniority" }
-    ],
+      feeder: [
+        { role: "GDS", offset: 0, type: "feeder" },
+        { role: "Postman", offset: 5, type: "feeder" },
+        { role: "PA / SA", offset: 8, type: "entry" },
+      ],
 
-    executive: [
-      {
-        role: "Inspector Posts (IP)",
-        serviceAfterPA: 8,
-        type: "executive",
-        note: "8 years qualifying service benchmark"
-      },
-      {
-        role: "Assistant Superintendent of Posts (ASP)",
-        serviceAfterIP: 5,
-        type: "executive",
-        note: "5 years regular service benchmark"
-      },
-      {
-        role: "Postal Service Group 'B'",
-        serviceAfterASP: 3,
-        type: "executive",
-        note: "Route and eligibility dependent"
-      },
-      {
-        role: "JTS — Indian Postal Service Group A",
-        serviceAfterPSB: 5,
-        type: "senior",
-        note: "5 years regular service benchmark"
-      }
-    ]
-  },
+      seniority: [
+        { role: "PA / SA", offset: 8, type: "entry" },
+        { role: "LSG", offset: null, type: "seniority" },
+        { role: "HSG-II", offset: null, type: "seniority" },
+        { role: "HSG-I", offset: null, type: "seniority" },
+      ],
 
-  "gds-mts-postman-pa": {
-    name: "GDS → MTS → Postman → PA / SA",
+      executive: [
+        {
+          role: "Inspector Posts (IP)",
+          serviceAfterPA: 8,
+          type: "executive",
+          note: "8 years qualifying service benchmark",
+        },
+        {
+          role: "Assistant Superintendent of Posts (ASP)",
+          serviceAfterIP: 5,
+          type: "executive",
+          note: "5 years regular service benchmark",
+        },
+        {
+          role: "Postal Service Group 'B'",
+          serviceAfterASP: 3,
+          type: "executive",
+          note: "Route and eligibility dependent",
+        },
+        {
+          role: "JTS — Indian Postal Service Group A",
+          serviceAfterPSB: 5,
+          type: "senior",
+          note: "5 years regular service benchmark",
+        },
+      ],
+    },
 
-    feeder: [
-      { role: "GDS", offset: 0, type: "feeder" },
-      { role: "MTS", offset: 3, type: "feeder" },
-      { role: "Postman", offset: 6, type: "feeder" },
-      { role: "PA / SA", offset: 9, type: "entry" }
-    ],
+    "gds-mts-postman-pa": {
+      name: "GDS → MTS → Postman → PA / SA",
 
-    seniority: [
-      { role: "PA / SA", offset: 9, type: "entry" },
-      { role: "LSG", offset: null, type: "seniority" },
-      { role: "HSG-II", offset: null, type: "seniority" },
-      { role: "HSG-I", offset: null, type: "seniority" }
-    ],
+      feeder: [
+        { role: "GDS", offset: 0, type: "feeder" },
+        { role: "MTS", offset: 3, type: "feeder" },
+        { role: "Postman", offset: 6, type: "feeder" },
+        { role: "PA / SA", offset: 9, type: "entry" },
+      ],
 
-    // executive: [
-    //   {
-    //     role: "Inspector Posts (IP)",
-    //     serviceAfterPA: 8,
-    //     type: "executive",
-    //     note: "8 years qualifying service benchmark"
-    //   },
-    //   {
-    //     role: "Assistant Superintendent of Posts (ASP)",
-    //     serviceAfterIP: 5,
-    //     type: "executive",
-    //     note: "5 years regular service benchmark"
-    //   },
-    //   {
-    //     role: "Postal Service Group 'B'",
-    //     serviceAfterASP: 3,
-    //     type: "executive",
-    //     note: "Route and eligibility dependent"
-    //   },
-    //   {
-    //     role: "JTS — Indian Postal Service Group A",
-    //     serviceAfterPSB: 5,
-    //     type: "senior",
-    //     note: "5 years regular service benchmark"
-    //   }
-    // ]
-  }
-};
+      seniority: [
+        { role: "PA / SA", offset: 9, type: "entry" },
+        { role: "LSG", offset: null, type: "seniority" },
+        { role: "HSG-II", offset: null, type: "seniority" },
+        { role: "HSG-I", offset: null, type: "seniority" },
+      ],
 
-const executiveCareerTrack = [
-  {
-    role: "Inspector Posts (IP)",
-    type: "executive",
-    serviceAfterPA: 8,
-    note: "8-year qualifying-service benchmark — actual appointment depends on the applicable examination / selection process.",
-  },
-
-  {
-    role: "Assistant Superintendent of Posts (ASP)",
-    type: "executive",
-    serviceAfterIP: 5,
-    note: "5 years regular-service benchmark in IP — actual promotion depends on applicable rules, vacancies and DPC.",
-  },
-
-  {
-    role: "Superintendent of Post Offices (SPO) / PS Group 'B'",
-    type: "senior",
-    dependent: true,
-    note: "Promotion / entry into this grade depends on the applicable route, seniority, vacancies and DPC / LDCE conditions.",
-  },
-
-  {
-    role: "JTS — Indian Postal Service Group 'A'",
-    type: "senior",
-    dependent: true,
-    note: "Qualifying-service benchmark applies after entry into PS Group 'B'; the benchmark is not an automatic promotion date.",
-  },
-
-  {
-    role: "STS — Indian Postal Service Group 'A'",
-    type: "senior",
-    dependent: true,
-    note: "Consideration depends on the applicable Recruitment Rules and DPC after the required regular service in JTS.",
-  },
-
-  {
-    role: "JAG / DPS-level posting",
-    type: "senior",
-    dependent: true,
-    note: "Further advancement depends on the applicable Group 'A' rules, DPC, vacancies and cadre requirements.",
-  },
-];
-const calc = useMemo(() => {
-  const base = mode === "age" ? Number(age) : Number(year);
-
-  if (!base || base < 1) return null;
-
-  const route = feederCalculatorRoutes[calculatorRoute];
-
-  if (!route) return null;
-
-  const calculateFeeder = (stages) =>
-    stages.map((stage) => ({
-      ...stage,
-      value:
-        mode === "age"
-          ? Math.round((base + stage.offset) * 10) / 10
-          : base + stage.offset
-    }));
-
-  const paStage = route.feeder.find(
-    (stage) => stage.role === "PA / SA"
-  );
-
-  const paBase = paStage?.offset ?? 0;
-
-const calculateExecutive = () => {
-
-  const ipOffset =
-    paBase + 8;
-
-  const aspOffset =
-    ipOffset + 5;
-
-  return executiveCareerTrack.map((stage) => {
-
-    let offset = null;
-
-    if (stage.role.includes("Inspector Posts")) {
-      offset = ipOffset;
-    }
-
-    else if (stage.role.includes("Assistant Superintendent")) {
-      offset = aspOffset;
-    }
-
-    return {
-      ...stage,
-
-      offset,
-
-      value:
-        offset === null
-          ? null
-          : mode === "age"
-            ? Math.round((base + offset) * 10) / 10
-            : base + offset
-    };
-
-  });
-};
-
-  return {
-    routeName: route.name,
-
-    feeder: calculateFeeder(route.feeder),
-
-    seniority: route.seniority.map((stage) => ({
-      ...stage,
-
-      value:
-        stage.offset !== null
-          ? (
-              mode === "age"
-                ? Math.round((base + stage.offset) * 10) / 10
-                : base + stage.offset
-            )
-          : null
-    })),
-
-    executive: calculateExecutive()
+      // executive: [
+      //   {
+      //     role: "Inspector Posts (IP)",
+      //     serviceAfterPA: 8,
+      //     type: "executive",
+      //     note: "8 years qualifying service benchmark"
+      //   },
+      //   {
+      //     role: "Assistant Superintendent of Posts (ASP)",
+      //     serviceAfterIP: 5,
+      //     type: "executive",
+      //     note: "5 years regular service benchmark"
+      //   },
+      //   {
+      //     role: "Postal Service Group 'B'",
+      //     serviceAfterASP: 3,
+      //     type: "executive",
+      //     note: "Route and eligibility dependent"
+      //   },
+      //   {
+      //     role: "JTS — Indian Postal Service Group A",
+      //     serviceAfterPSB: 5,
+      //     type: "senior",
+      //     note: "5 years regular service benchmark"
+      //   }
+      // ]
+    },
   };
 
-}, [age, year, mode, calculatorRoute]);
-  const scrollTo = id => {
-    document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
+  const executiveCareerTrack = [
+    {
+      role: "Inspector Posts (IP)",
+      type: "executive",
+      serviceAfterPA: 8,
+      note: "8-year qualifying-service benchmark — actual appointment depends on the applicable examination / selection process.",
+    },
+
+    {
+      role: "Assistant Superintendent of Posts (ASP)",
+      type: "executive",
+      serviceAfterIP: 5,
+      note: "5 years regular-service benchmark in IP — actual promotion depends on applicable rules, vacancies and DPC.",
+    },
+
+    {
+      role: "Superintendent of Post Offices (SPO) / PS Group 'B'",
+      type: "senior",
+      dependent: true,
+      note: "Promotion / entry into this grade depends on the applicable route, seniority, vacancies and DPC / LDCE conditions.",
+    },
+
+    {
+      role: "JTS — Indian Postal Service Group 'A'",
+      type: "senior",
+      dependent: true,
+      note: "Qualifying-service benchmark applies after entry into PS Group 'B'; the benchmark is not an automatic promotion date.",
+    },
+
+    {
+      role: "STS — Indian Postal Service Group 'A'",
+      type: "senior",
+      dependent: true,
+      note: "Consideration depends on the applicable Recruitment Rules and DPC after the required regular service in JTS.",
+    },
+
+    {
+      role: "JAG / DPS-level posting",
+      type: "senior",
+      dependent: true,
+      note: "Further advancement depends on the applicable Group 'A' rules, DPC, vacancies and cadre requirements.",
+    },
+  ];
+  const calc = useMemo(() => {
+    const base = mode === "age" ? Number(age) : Number(year);
+
+    if (!base || base < 1) return null;
+
+    const route = feederCalculatorRoutes[calculatorRoute];
+
+    if (!route) return null;
+
+    const calculateFeeder = (stages) =>
+      stages.map((stage) => ({
+        ...stage,
+        value:
+          mode === "age"
+            ? Math.round((base + stage.offset) * 10) / 10
+            : base + stage.offset,
+      }));
+
+    const paStage = route.feeder.find((stage) => stage.role === "PA / SA");
+
+    const paBase = paStage?.offset ?? 0;
+
+    const calculateExecutive = () => {
+      const ipOffset = paBase + 8;
+
+      const aspOffset = ipOffset + 5;
+
+      return executiveCareerTrack.map((stage) => {
+        let offset = null;
+
+        if (stage.role.includes("Inspector Posts")) {
+          offset = ipOffset;
+        } else if (stage.role.includes("Assistant Superintendent")) {
+          offset = aspOffset;
+        }
+
+        return {
+          ...stage,
+
+          offset,
+
+          value:
+            offset === null
+              ? null
+              : mode === "age"
+                ? Math.round((base + offset) * 10) / 10
+                : base + offset,
+        };
+      });
+    };
+
+    return {
+      routeName: route.name,
+
+      feeder: calculateFeeder(route.feeder),
+
+      seniority: route.seniority.map((stage) => ({
+        ...stage,
+
+        value:
+          stage.offset !== null
+            ? mode === "age"
+              ? Math.round((base + stage.offset) * 10) / 10
+              : base + stage.offset
+            : null,
+      })),
+
+      executive: calculateExecutive(),
+    };
+  }, [age, year, mode, calculatorRoute]);
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMobileNav(false);
   };
 
@@ -1320,6 +1379,17 @@ const calculateExecutive = () => {
                       </div>
                     </div>
                   </div>
+                  <div className="input-wrap name-input-wrap">
+                    <span>NAME</span>
+
+                    <input
+                      type="text"
+                      value={userName}
+                      onChange={(e) => setUserName(e.target.value)}
+                      placeholder="e.g. Anubhav Mishra"
+                      maxLength={40}
+                    />
+                  </div>
                   <div className="input-wrap">
                     <span>{mode === "age" ? "AGE" : "YEAR"}</span>
                     <input
@@ -1334,7 +1404,133 @@ const calculateExecutive = () => {
                       placeholder={mode === "age" ? "e.g. 24" : "e.g. 2026"}
                     />
                   </div>
+                  {calc && (
+                    <div className="career-snapshot">
+                      <div className="snapshot-top">
+                        <div>
+                          <span className="snapshot-kicker">YOUR POSTPATH</span>
+
+                          <h3>Career Snapshot</h3>
+                        </div>
+
+                        <div className="snapshot-icon">
+                          <Route size={17} />
+                        </div>
+                      </div>
+
+                      <div className="snapshot-route">
+                        <span>SELECTED ROUTE</span>
+
+                        <strong>{calc.routeName}</strong>
+                      </div>
+
+                      <div className="snapshot-grid">
+                        <div className="snapshot-stat">
+                          <span>
+                            STARTING {mode === "age" ? "AGE" : "YEAR"}
+                          </span>
+
+                          <strong>
+                            {mode === "age" ? `${age} yrs` : year}
+                          </strong>
+                        </div>
+
+                        <div className="snapshot-stat">
+                          <span>PA / SA</span>
+
+                          <strong>
+                            {calc.feeder.find(
+                              (stage) => stage.role === "PA / SA",
+                            )?.value ?? "—"}
+                          </strong>
+                        </div>
+                      </div>
+
+                      <div className="snapshot-divider"></div>
+
+                      <div className="snapshot-next">
+                        <div>
+                          <span>NEXT EXECUTIVE MILESTONE</span>
+
+                          <strong>Inspector Posts (IP)</strong>
+                        </div>
+
+                        <span className="snapshot-arrow">→</span>
+                      </div>
+
+                      <button
+                        className="snapshot-share-btn"
+                        onClick={() => setShareModalOpen(true)}
+                      >
+                        <Share2 size={16} />
+                        <span>Share Career Card</span>
+                      </button>
+                    </div>
+                  )}
+                  <div className="career-journey-animation postpath-mini-animation">
+                    <div className="mini-sky">
+                      <span className="mini-sun"></span>
+                      <span className="mini-cloud cloud-a"></span>
+                      <span className="mini-cloud cloud-b"></span>
+                    </div>
+
+                    <div className="mini-hill hill-1"></div>
+                    <div className="mini-hill hill-2"></div>
+
+                    <div className="mini-tree">
+                      <span className="tree-crown"></span>
+                      <span className="tree-trunk"></span>
+                    </div>
+
+                    <div className="mini-house">
+                      <span className="house-roof"></span>
+                      <span className="house-wall"></span>
+                      <span className="house-door"></span>
+                      <span className="house-window"></span>
+                    </div>
+
+                    <div className="mini-ground">
+                      <span className="mini-path"></span>
+                    </div>
+
+                    <div className="mini-postman">
+                      <span className="mini-head">
+                        <i></i>
+                      </span>
+                      <span className="mini-cap"></span>
+
+                      <span className="mini-body">
+                        <b>POST</b>
+                      </span>
+
+                      <span className="mini-arm arm-back"></span>
+                      <span className="mini-arm arm-front"></span>
+
+                      <span className="mini-leg leg-left"></span>
+                      <span className="mini-leg leg-right"></span>
+
+                      <span className="mini-bag">
+                        <b>✉</b>
+                      </span>
+                    </div>
+
+                    <div className="mini-letter">
+                      <span>POST</span>
+                    </div>
+
+                    <div className="mini-mailbox">
+                      <span></span>
+                    </div>
+
+                    <div className="mini-glow"></div>
+
+                    <div className="mini-caption">
+                      <span>POSTPATH JOURNEY</span>
+                      <strong>Every journey begins with a step.</strong>
+                    </div>
+                  </div>
                 </div>
+
                 <div className="results">
                   {!calc ? (
                     <div className="empty-results">
@@ -1621,197 +1817,6 @@ const calculateExecutive = () => {
                           promotion timeline.
                         </p>
                       </div>
-                      <div className="share-career-card">
-                        <div className="share-card-header">
-                          <div>
-                            <span>MY POSTPATH</span>
-
-                            <h3>Your career map, ready to share.</h3>
-                          </div>
-
-                          <div className="share-card-icon">
-                            <Route size={17} />
-                          </div>
-                        </div>
-
-                        <div ref={shareCardRef} className="share-preview">
-                          <div className="share-preview-top">
-                            <div className="share-preview-brand">
-                              <span className="brand-mark">
-                                <Route size={16} />
-                              </span>
-
-                              <strong>
-                                Post<span>Path</span>
-                              </strong>
-                            </div>
-
-                            <span>CAREER MAP</span>
-                          </div>
-
-                          <div className="share-preview-route">
-                            {calc.routeName}
-                          </div>
-
-                          <div className="share-preview-start">
-                            <span>
-                              STARTING {mode === "age" ? "AGE" : "YEAR"}
-                            </span>
-
-                            <strong>
-                              {mode === "age" ? `${age} yrs` : year}
-                            </strong>
-                          </div>
-
-                          <div className="share-preview-milestones">
-                            {calc.feeder
-                              .filter(
-                                (stage) =>
-                                  stage.role === "PA / SA" ||
-                                  stage.role === "GDS",
-                              )
-                              .map((stage) => (
-                                <div
-                                  className="share-mini-stage"
-                                  key={`share-${stage.role}`}
-                                >
-                                  <span>{stage.role}</span>
-
-                                  <strong>
-                                    {mode === "age"
-                                      ? `${stage.value} yrs`
-                                      : stage.value}
-                                  </strong>
-                                </div>
-                              ))}
-
-                            {calc.executive
-                              .filter(
-                                (stage) =>
-                                  stage.role.includes("Inspector") ||
-                                  stage.role.includes(
-                                    "Assistant Superintendent",
-                                  ),
-                              )
-                              .map((stage) => (
-                                <div
-                                  className="share-mini-stage"
-                                  key={`share-${stage.role}`}
-                                >
-                                  <span>{stage.role}</span>
-
-                                  <strong>
-                                    {stage.value !== null
-                                      ? mode === "age"
-                                        ? `≈ ${stage.value} yrs`
-                                        : stage.value
-                                      : "Rule-dependent"}
-                                  </strong>
-                                </div>
-                              ))}
-                          </div>
-
-                          <div className="share-preview-footer">
-                            <span>INDICATIVE · RULES MAY CHANGE</span>
-
-                            <strong>postpath.in</strong>
-                          </div>
-                        </div>
-
-                        <div className="share-actions">
-                          <button
-                            className="share-action primary-share"
-                            onClick={async () => {
-                              const shareUrl = window.location.href;
-
-                              const text = `My PostPath career map — ${calc.routeName}.`;
-
-                              if (navigator.share) {
-                                try {
-                                  await navigator.share({
-                                    title: "My PostPath Career Map",
-                                    text,
-                                    url: shareUrl,
-                                  });
-                                } catch (error) {
-                                  // User cancelled share dialog.
-                                }
-                              } else {
-                                await navigator.clipboard.writeText(
-                                  `${text}\n${shareUrl}`,
-                                );
-
-                                setShareMessage("Career map link copied.");
-
-                                setTimeout(() => setShareMessage(""), 2200);
-                              }
-                            }}
-                          >
-                            <Share2 size={15} />
-                            Share
-                          </button>
-
-                          <button
-                            className="share-action"
-                            onClick={async () => {
-                              await navigator.clipboard.writeText(
-                                window.location.href,
-                              );
-
-                              setShareMessage(
-                                "Personalized roadmap link copied.",
-                              );
-
-                              setTimeout(() => setShareMessage(""), 2200);
-                            }}
-                          >
-                            <Copy size={15} />
-                            Copy link
-                          </button>
-
-                          <button
-                            className="share-action"
-                            onClick={async () => {
-                              if (!shareCardRef.current) return;
-
-                              try {
-                                const canvas = await html2canvas(
-                                  shareCardRef.current,
-                                  {
-                                    scale: 2,
-                                    backgroundColor: "#fffdfa",
-                                    useCORS: true,
-                                  },
-                                );
-
-                                const link = document.createElement("a");
-
-                                link.download = "my-postpath-career-map.png";
-
-                                link.href = canvas.toDataURL("image/png");
-
-                                link.click();
-
-                                setShareMessage("Career card downloaded.");
-
-                                setTimeout(() => setShareMessage(""), 2200);
-                              } catch (error) {
-                                setShareMessage("Could not create the image.");
-                              }
-                            }}
-                          >
-                            <Download size={15} />
-                            Download
-                          </button>
-                        </div>
-
-                        {shareMessage && (
-                          <div className="share-toast">
-                            <Check size={14} />
-                            {shareMessage}
-                          </div>
-                        )}
-                      </div>
                     </div>
                   )}
                 </div>
@@ -1930,6 +1935,202 @@ const calculateExecutive = () => {
             </div>
           </footer>
         </main>
+        {shareModalOpen && (
+          <div
+            className="share-modal-overlay"
+            onClick={() => setShareModalOpen(false)}
+          >
+            <div className="share-modal" onClick={(e) => e.stopPropagation()}>
+              <div className="share-modal-header">
+                <div>
+                  <span className="share-modal-eyebrow">
+                    INDIA POST CAREER ANALYTICS
+                  </span>
+
+                  <h3>Your Career Card</h3>
+
+                  <p>
+                    Preview your personalized career journey before sharing.
+                  </p>
+                </div>
+
+                <button
+                  className="share-modal-close"
+                  onClick={() => setShareModalOpen(false)}
+                  aria-label="Close share preview"
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              <div ref={shareCardRef} className="share-preview">
+                <div className="share-preview-top">
+                  <div className="share-preview-brand">
+                    <span className="brand-mark">
+                      <Route size={16} />
+                    </span>
+
+                    <strong>
+                      Post<span>Path</span>
+                    </strong>
+                  </div>
+
+                  <span>CAREER MAP</span>
+                </div>
+
+                <div className="share-preview-person">
+                  <span>CAREER PROFILE</span>
+
+                  <strong>{userName.trim() || "Your Career Map"}</strong>
+                </div>
+                <div className="share-profile-stats">
+                  <div>
+                    <span>STARTING AGE</span>
+                    <strong>{mode === "age" ? `${age} yrs` : "—"}</strong>
+                  </div>
+
+                  <div>
+                    <span>STARTING YEAR</span>
+                    <strong>{mode === "year" ? year : "—"}</strong>
+                  </div>
+
+                  <div>
+                    <span>STARTING POST</span>
+                    <strong>GDS</strong>
+                  </div>
+                </div>
+                <div className="share-preview-route">{calc.routeName}</div>
+                <div className="share-career-line">
+                  <div className="share-line-track"></div>
+
+                  {calc.feeder.map((stage, index) => (
+                    <div
+                      className="share-line-node"
+                      key={`line-feeder-${stage.role}`}
+                    >
+                      <span>{index + 1}</span>
+
+                      <small>{stage.role}</small>
+                    </div>
+                  ))}
+
+                  <div className="share-line-break">EXECUTIVE PATH</div>
+
+                  {calc.executive.map((stage, index) => (
+                    <div
+                      className="share-line-node executive"
+                      key={`line-executive-${stage.role}`}
+                    >
+                      <span>{calc.executive.length > 0 ? index + 1 : ""}</span>
+
+                      <small>
+                        {stage.role
+                          .replace("Assistant Superintendent of Posts", "ASP")
+                          .replace("Inspector Posts", "IP")
+                          .replace(
+                            "Indian Postal Service Group 'A'",
+                            "IPoS Group A",
+                          )}
+                      </small>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="share-preview-start">
+                  <span>STARTING {mode === "age" ? "AGE" : "YEAR"}</span>
+
+                  <strong>{mode === "age" ? `${age} yrs` : year}</strong>
+                </div>
+
+                <div className="share-preview-milestones">
+                  {calc.feeder.map((stage) => (
+                    <div
+                      className="share-mini-stage"
+                      key={`share-feeder-${stage.role}`}
+                    >
+                      <span>{stage.role}</span>
+
+                      <strong>
+                        {mode === "age" ? `${stage.value} yrs` : stage.value}
+                      </strong>
+
+                      <small>FEEDER</small>
+                    </div>
+                  ))}
+
+                  {calc.executive.map((stage) => (
+                    <div
+                      className="share-mini-stage"
+                      key={`share-executive-${stage.role}`}
+                    >
+                      <span>{stage.role}</span>
+
+                      <strong>
+                        {stage.value !== null
+                          ? mode === "age"
+                            ? `≈ ${stage.value} yrs`
+                            : stage.value
+                          : "RULE-DEPENDENT"}
+                      </strong>
+
+                      <small>
+                        {stage.value !== null
+                          ? "ELIGIBILITY BENCHMARK"
+                          : "ACTUAL TIMING DEPENDENT"}
+                      </small>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="share-preview-footer">
+                  <span>INDICATIVE · RULES MAY CHANGE</span>
+
+                  <strong>postpath.in</strong>
+                </div>
+              </div>
+
+              <div className="share-modal-actions">
+                <button
+                  className="share-action primary-share"
+                  onClick={() => {
+                    // Abhi temporary
+                    console.log("Share clicked");
+                  }}
+                >
+                  <Share2 size={15} />
+                  Share
+                </button>
+
+                <button
+                  className="share-action"
+                  onClick={() => {
+                    // Abhi temporary
+                    console.log("Download clicked");
+                  }}
+                >
+                  <Download size={15} />
+                  Download
+                </button>
+
+                <button
+                  className="share-action"
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    setShareMessage("Career map link copied.");
+                    setTimeout(() => setShareMessage(""), 2200);
+                  }}
+                >
+                  <Copy size={15} />
+                  Copy Link
+                </button>
+              </div>
+
+              {shareMessage && (
+                <div className="share-modal-message">{shareMessage}</div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
