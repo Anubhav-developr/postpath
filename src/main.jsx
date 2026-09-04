@@ -997,50 +997,92 @@ function App() {
   };
 
   const handleCareerShare = async () => {
-    if (!calc) return;
-
-    const shareUrl = window.location.href;
-    const text = `My PostPath career map — ${calc.routeName}.`;
+    if (!shareCardRef.current || !calc) return;
 
     try {
+      setShareMessage("Preparing your career card...");
+
+      await new Promise((resolve) => requestAnimationFrame(() => resolve()));
+
+      if (document.fonts?.ready) {
+        await document.fonts.ready;
+      }
+
+      const canvas = await html2canvas(shareCardRef.current, {
+        scale: Math.min(window.devicePixelRatio || 2, 2),
+        backgroundColor: "#fffdfa",
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
+        imageTimeout: 15000,
+      });
+
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob(
+          (result) => {
+            if (result) resolve(result);
+            else reject(new Error("PNG creation failed"));
+          },
+          "image/png",
+          1,
+        );
+      });
+
+      const file = new File([blob], "my-postpath-career-map.png", {
+        type: "image/png",
+      });
+
+      const shareData = {
+        files: [file],
+        title: "My PostPath Career Map",
+        text: `My PostPath career map — ${calc.routeName}.`,
+      };
+
+      /* =========================================
+       ACTUAL IMAGE SHARE
+    ========================================= */
+
       if (
         navigator.share &&
-        typeof navigator.share === "function" &&
-        window.isSecureContext
+        navigator.canShare &&
+        navigator.canShare({ files: [file] })
       ) {
-        await navigator.share({
-          title: "My PostPath Career Map",
-          text,
-          url: shareUrl,
-        });
+        await navigator.share(shareData);
 
-        setShareMessage("Career map shared.");
+        setShareMessage("Career card shared.");
         setTimeout(() => setShareMessage(""), 2200);
+
         return;
       }
 
-      const copied = await copyText(`${text}\n${shareUrl}`);
+      /* =========================================
+       FALLBACK
+       If browser cannot share files
+    ========================================= */
 
-      setShareMessage(
-        copied ? "Career map link copied." : "Unable to share this link.",
-      );
+      const copied = await copyText(window.location.href);
 
-      setTimeout(() => setShareMessage(""), 2200);
+      if (copied) {
+        setShareMessage(
+          "Image sharing isn't supported here — career link copied.",
+        );
+      } else {
+        setShareMessage("Image sharing isn't supported in this browser.");
+      }
+
+      setTimeout(() => setShareMessage(""), 3000);
     } catch (error) {
-      // Share sheet cancelled by user — don't show an error.
-      if (error?.name === "AbortError") return;
+      /* User closed native share sheet */
+      if (error?.name === "AbortError") {
+        setShareMessage("");
+        return;
+      }
 
-      console.error("Share failed:", error);
+      console.error("Image share failed:", error);
 
-      const copied = await copyText(`${text}\n${shareUrl}`);
+      setShareMessage("Could not share the career card. Try Download instead.");
 
-      setShareMessage(
-        copied
-          ? "Share unavailable — link copied instead."
-          : "Unable to share this career map.",
-      );
-
-      setTimeout(() => setShareMessage(""), 2200);
+      setTimeout(() => setShareMessage(""), 3000);
     }
   };
 
