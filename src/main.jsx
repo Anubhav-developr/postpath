@@ -1455,7 +1455,7 @@ function App() {
                 <Calculator size={16} /> PLOT YOUR OWN TIMELINE
               </div>
               <div className="calc-layout">
-                <div>
+                <div className="calculator-left">
                   <h2>
                     Turn the map
                     <br />
@@ -1653,6 +1653,328 @@ function App() {
                       </button>
                     </div>
                   )}
+                  <div className="mobile-results">
+                    {!calc ? (
+                      <div className="results-empty premium-results-empty">
+                        <div className="empty-route-icon">
+                          <Route size={23} />
+                        </div>
+
+                        <span className="empty-kicker">YOUR CAREER MAP</span>
+
+                        <h3>
+                          Your timeline
+                          <br />
+                          <span>starts here.</span>
+                        </h3>
+
+                        <p>
+                          Enter your starting age or year to reveal your
+                          projected PostPath career journey.
+                        </p>
+
+                        <div className="empty-route-line">
+                          <span></span>
+                          <i></i>
+                          <span></span>
+                        </div>
+
+                        <small>
+                          Select a starting point to plot your milestones
+                        </small>
+                      </div>
+                    ) : (
+                      <div className="career-projection">
+                        {/* =========================
+          HEADER
+      ========================= */}
+
+                        <div className="projection-header">
+                          <div>
+                            <span>YOUR PROJECTED CAREER PATH</span>
+
+                            <h3>{calc.routeName}</h3>
+                          </div>
+
+                          <div className="projection-live">
+                            <i />
+                            INDICATIVE
+                          </div>
+                        </div>
+
+                        {/* =========================
+          FEEDER ROUTE
+      ========================= */}
+
+                        <div className="career-track feeder-track">
+                          <div className="track-heading">
+                            <span className="track-number">01</span>
+
+                            <div>
+                              <strong>Feeder Route</strong>
+                              <small>GDS → PA / SA</small>
+                            </div>
+                          </div>
+
+                          <div className="career-nodes">
+                            {calc.feeder.map((stage, index) => (
+                              <div
+                                className="career-node-wrap"
+                                key={`feeder-${stage.role}`}
+                                style={{
+                                  animationDelay: `${index * 120}ms`,
+                                }}
+                              >
+                                <div className="career-node">
+                                  <div className="node-pulse" />
+
+                                  <span>
+                                    {stage.value !== null
+                                      ? mode === "age"
+                                        ? `≈ ${stage.value} yrs`
+                                        : stage.value
+                                      : "RULE-DEPENDENT"}
+                                  </span>
+                                </div>
+
+                                <div className="career-node-info">
+                                  <strong>{stage.role}</strong>
+
+                                  <small>
+                                    {stage.type === "entry"
+                                      ? "PA / SA entry"
+                                      : "Feeder stage"}
+                                  </small>
+                                </div>
+
+                                {index < calc.feeder.length - 1 && (
+                                  <div className="career-connector" />
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* =========================
+          SENIORITY TRACK
+      ========================= */}
+
+                        <div className="career-track seniority-track">
+                          <div className="track-heading">
+                            <span className="track-number">02</span>
+
+                            <div>
+                              <strong>
+                                Seniority / Non-Executive Progression
+                              </strong>
+
+                              <small>PA / SA → LSG → HSG-II → HSG-I</small>
+                            </div>
+                          </div>
+
+                          <div className="career-nodes">
+                            {calc.seniority.map((stage, index) => (
+                              <div
+                                className="career-node-wrap seniority-node-wrap"
+                                key={`seniority-${stage.role}`}
+                                style={{
+                                  animationDelay: `${index * 140}ms`,
+                                }}
+                              >
+                                <div className="career-node seniority-node">
+                                  <div className="node-pulse" />
+
+                                  <span>
+                                    {stage.value !== null
+                                      ? `≈ ${stage.value}`
+                                      : "—"}
+                                  </span>
+                                </div>
+
+                                <div className="node-status-badge">
+                                  {stage.value !== null
+                                    ? "INDICATIVE"
+                                    : "RULE-DEPENDENT"}
+                                </div>
+
+                                <div className="career-node-info">
+                                  <strong>{stage.role}</strong>
+
+                                  <small>
+                                    {stage.value !== null
+                                      ? "Indicative seniority milestone"
+                                      : "Depends on applicable seniority, vacancy and rules"}
+                                  </small>
+                                </div>
+
+                                {index < calc.seniority.length - 1 && (
+                                  <div className="career-connector seniority-connector" />
+                                )}
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="track-note">
+                            <Info size={15} />
+
+                            <span>
+                              Seniority-based progression can vary with cadre
+                              strength, vacancy position, qualifying service and
+                              applicable Department of Posts rules.
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* =========================
+          EXECUTIVE TRACK
+      ========================= */}
+
+                        <div className="career-track executive-track">
+                          <div className="track-heading">
+                            <span className="track-number">03</span>
+
+                            <div>
+                              <strong>Executive / Leadership Track</strong>
+
+                              <small>
+                                PA / SA → IP → ASP → SPO / SSRM → DPS
+                              </small>
+
+                              <div className="track-caption">
+                                The higher-responsibility route into inspection,
+                                administration and senior postal leadership.
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="executive-timeline">
+                            <div className="executive-rail" />
+
+                            {calc.executive.map((stage, index) => (
+                              <div
+                                className={`executive-milestone executive-${stage.type}`}
+                                key={`executive-${stage.role}`}
+                                style={{
+                                  animationDelay: `${index * 180}ms`,
+                                }}
+                              >
+                                <div className="executive-node-column">
+                                  <div className="executive-node">
+                                    <div className="executive-node-glow" />
+
+                                    <span>
+                                      {stage.value !== null
+                                        ? mode === "age"
+                                          ? `≈ ${stage.value}`
+                                          : stage.value
+                                        : "—"}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="executive-content">
+                                  <div className="executive-topline">
+                                    <span className="executive-step">
+                                      0{index + 1}
+                                    </span>
+
+                                    <span className="executive-stage-type">
+                                      {stage.type === "executive"
+                                        ? "EXECUTIVE"
+                                        : stage.type === "senior"
+                                          ? "SENIOR LEADERSHIP"
+                                          : "SELECTION / SENIORITY"}
+                                    </span>
+                                  </div>
+
+                                  <h4>{stage.role}</h4>
+
+                                  <p>
+                                    {stage.note ||
+                                      "Subject to applicable rules"}
+                                  </p>
+
+                                  <div className="executive-age">
+                                    <span>
+                                      {stage.value !== null
+                                        ? mode === "age"
+                                          ? "ELIGIBILITY BENCHMARK AGE"
+                                          : "ELIGIBILITY BENCHMARK YEAR"
+                                        : "ACTUAL PROMOTION TIMING"}
+                                    </span>
+
+                                    <strong>
+                                      {stage.value !== null
+                                        ? mode === "age"
+                                          ? `${stage.value} yrs`
+                                          : stage.value
+                                        : "RULE-DEPENDENT"}
+                                    </strong>
+                                    <div className="promotion-status">
+                                      <span
+                                        className={
+                                          stage.value !== null
+                                            ? "promotion-status-badge benchmark-status"
+                                            : "promotion-status-badge dependent-status"
+                                        }
+                                      >
+                                        {stage.value !== null
+                                          ? "ELIGIBILITY ≠ PROMOTION"
+                                          : "PROMOTION DEPENDENT"}
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="track-note executive-note">
+                            <Info size={15} />
+
+                            <span>
+                              Executive promotions are not fixed-age milestones.
+                              Actual progression may depend on examination,
+                              qualifying service, seniority, vacancies, DPC and
+                              recruitment rules/orders applicable at that time.
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* =========================
+          DATA STATUS
+      ========================= */}
+
+                        <div className="projection-footer">
+                          <div>
+                            <span className="status-dot" />
+                            DATA STATUS
+                          </div>
+
+                          <strong>Indicative · Rules may change</strong>
+
+                          <p>
+                            Projection is for planning purposes only. Verify the
+                            latest Department of Posts notification, recruitment
+                            rules and orders before relying on any eligibility
+                            or promotion timeline.
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  {calc && (
+                    <div className="mobile-share">
+                      <button
+                        type="button"
+                        onClick={() => setShareModalOpen(true)}
+                      >
+                        <Share2 size={16} />
+                        Share Career Plan
+                      </button>
+                    </div>
+                  )}
+
                   <div className="career-journey-animation postpath-mini-animation">
                     <div className="mini-sky">
                       <span className="mini-sun"></span>
