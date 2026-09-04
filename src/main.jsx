@@ -743,15 +743,17 @@ const executiveCareerTrack = [
   },
 
   {
-    role: "SPO / SSRM",
-    type: "seniority",
-    note: "Subject to applicable rules, vacancies, seniority and DPC"
+    role: "SPO / SSRM — Postal Service Group 'B'",
+    type: "senior",
+    dependent: true,
+    note: "Entry depends on applicable PS Group 'B' promotion route, seniority, vacancy and DPC/LDCE conditions"
   },
 
   {
-    role: "IPoS Group A / JTS onward",
+    role: "JTS — Indian Postal Service Group A",
     type: "senior",
-    note: "Selection / promotion / cadre conditions dependent"
+    dependent: true,
+    note: "Eligibility benchmark: 5 years regular service in Postal Service Group 'B'"
   }
 ];
 const calc = useMemo(() => {
@@ -779,28 +781,38 @@ const calc = useMemo(() => {
   const paBase = paStage?.offset ?? 0;
 
 const calculateExecutive = () => {
-  let currentOffset = paBase;
+
+  const ipOffset =
+    paBase + 8;
+
+  const aspOffset =
+    ipOffset + 5;
 
   return executiveCareerTrack.map((stage) => {
 
-    if (stage.serviceAfterPA) {
-      currentOffset = paBase + stage.serviceAfterPA;
+    let offset = null;
+
+    if (stage.role.includes("Inspector Posts")) {
+      offset = ipOffset;
     }
 
-    if (stage.serviceAfterIP) {
-      currentOffset += stage.serviceAfterIP;
+    else if (stage.role.includes("Assistant Superintendent")) {
+      offset = aspOffset;
     }
 
     return {
       ...stage,
 
-      offset: currentOffset,
+      offset,
 
       value:
-        mode === "age"
-          ? Math.round((base + currentOffset) * 10) / 10
-          : base + currentOffset
+        offset === null
+          ? null
+          : mode === "age"
+            ? Math.round((base + offset) * 10) / 10
+            : base + offset
     };
+
   });
 };
 
@@ -1284,9 +1296,13 @@ const calculateExecutive = () => {
           <div className="executive-node-glow" />
 
           <span>
-            {mode === "age"
-              ? `≈ ${stage.value}`
-              : stage.value}
+            {stage.value !== null
+  ? (
+      mode === "age"
+        ? `≈ ${stage.value}`
+        : stage.value
+    )
+  : "—"}
           </span>
 
         </div>
@@ -1325,11 +1341,15 @@ const calculateExecutive = () => {
               : "PROJECTED YEAR"}
           </span>
 
-          <strong>
-            {mode === "age"
-              ? `${stage.value} yrs`
-              : stage.value}
-          </strong>
+         <strong>
+  {stage.value !== null
+    ? (
+        mode === "age"
+          ? `${stage.value} yrs`
+          : stage.value
+      )
+    : "RULE-DEPENDENT"}
+</strong>
 
         </div>
 
