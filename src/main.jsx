@@ -968,6 +968,150 @@ function App() {
     setMobileNav(false);
   };
 
+  const copyText = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      textarea.style.top = "0";
+
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+
+      const copied = document.execCommand("copy");
+
+      document.body.removeChild(textarea);
+
+      return copied;
+    } catch (error) {
+      console.error("Copy failed:", error);
+      return false;
+    }
+  };
+
+  const handleCareerShare = async () => {
+    if (!calc) return;
+
+    const shareUrl = window.location.href;
+    const text = `My PostPath career map — ${calc.routeName}.`;
+
+    try {
+      if (
+        navigator.share &&
+        typeof navigator.share === "function" &&
+        window.isSecureContext
+      ) {
+        await navigator.share({
+          title: "My PostPath Career Map",
+          text,
+          url: shareUrl,
+        });
+
+        setShareMessage("Career map shared.");
+        setTimeout(() => setShareMessage(""), 2200);
+        return;
+      }
+
+      const copied = await copyText(`${text}\n${shareUrl}`);
+
+      setShareMessage(
+        copied ? "Career map link copied." : "Unable to share this link.",
+      );
+
+      setTimeout(() => setShareMessage(""), 2200);
+    } catch (error) {
+      // Share sheet cancelled by user — don't show an error.
+      if (error?.name === "AbortError") return;
+
+      console.error("Share failed:", error);
+
+      const copied = await copyText(`${text}\n${shareUrl}`);
+
+      setShareMessage(
+        copied
+          ? "Share unavailable — link copied instead."
+          : "Unable to share this career map.",
+      );
+
+      setTimeout(() => setShareMessage(""), 2200);
+    }
+  };
+
+  const handleCopyCareerLink = async () => {
+    const copied = await copyText(window.location.href);
+
+    setShareMessage(
+      copied ? "Personalized roadmap link copied." : "Could not copy the link.",
+    );
+
+    setTimeout(() => setShareMessage(""), 2200);
+  };
+
+  const handleDownloadCareerCard = async () => {
+    if (!shareCardRef.current) {
+      setShareMessage("Career card is not ready.");
+      setTimeout(() => setShareMessage(""), 2200);
+      return;
+    }
+
+    try {
+      setShareMessage("Preparing your career card...");
+
+      // Give the browser one paint cycle before capturing.
+      await new Promise((resolve) => requestAnimationFrame(() => resolve()));
+
+      if (document.fonts?.ready) {
+        await document.fonts.ready;
+      }
+
+      const canvas = await html2canvas(shareCardRef.current, {
+        scale: Math.min(window.devicePixelRatio || 2, 2),
+        backgroundColor: "#fffdfa",
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
+        imageTimeout: 15000,
+      });
+
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          setShareMessage("Could not create the image.");
+          setTimeout(() => setShareMessage(""), 2200);
+          return;
+        }
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "my-postpath-career-map.png";
+
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+        setShareMessage("Career card downloaded.");
+
+        setTimeout(() => setShareMessage(""), 2200);
+      }, "image/png");
+    } catch (error) {
+      console.error("Career card download failed:", error);
+
+      setShareMessage("Could not create the career card. Please try again.");
+
+      setTimeout(() => setShareMessage(""), 3000);
+    }
+  };
+
   return (
     <>
       <Preloader />
@@ -1533,15 +1677,33 @@ function App() {
 
                 <div className="results">
                   {!calc ? (
-                    <div className="empty-results">
-                      <CircleHelp size={22} />
+                    <div className="results-empty premium-results-empty">
+                      <div className="empty-route-icon">
+                        <Route size={23} />
+                      </div>
 
-                      <strong>Your career projection appears here.</strong>
+                      <span className="empty-kicker">YOUR CAREER MAP</span>
 
-                      <span>
-                        Enter your joining age or year to reveal your indicative
-                        career journey.
-                      </span>
+                      <h3>
+                        Your timeline
+                        <br />
+                        <span>starts here.</span>
+                      </h3>
+
+                      <p>
+                        Enter your starting age or year to reveal your projected
+                        PostPath career journey.
+                      </p>
+
+                      <div className="empty-route-line">
+                        <span></span>
+                        <i></i>
+                        <span></span>
+                      </div>
+
+                      <small>
+                        Select a starting point to plot your milestones
+                      </small>
                     </div>
                   ) : (
                     <div className="career-projection">
@@ -2091,22 +2253,18 @@ function App() {
 
               <div className="share-modal-actions">
                 <button
+                  type="button"
                   className="share-action primary-share"
-                  onClick={() => {
-                    // Abhi temporary
-                    console.log("Share clicked");
-                  }}
+                  onClick={handleCareerShare}
                 >
                   <Share2 size={15} />
                   Share
                 </button>
 
                 <button
+                  type="button"
                   className="share-action"
-                  onClick={() => {
-                    // Abhi temporary
-                    console.log("Download clicked");
-                  }}
+                  onClick={handleDownloadCareerCard}
                 >
                   <Download size={15} />
                   Download
