@@ -1,0 +1,183 @@
+.what-if {
+  margin: 72px auto 0;
+  max-width: 1180px;
+  padding: 0 24px;
+}
+
+.what-if-heading {
+  max-width: 760px;
+}
+
+.what-if-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.what-if-heading h2 {
+  margin: 10px 0 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.what-if-heading p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.what-if-controls {
+  display: grid;
+  grid-template-columns: 0.8fr 0.7fr 1.4fr 1.4fr;
+  gap: 14px;
+  margin: 26px 0;
+  padding: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.what-if-field {
+  display: grid;
+  gap: 7px;
+}
+
+.what-if-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.what-if-field select,
+.what-if-field input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+}
+
+.what-if-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.what-if-card {
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.what-if-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.what-if-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--red);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.what-if-card h3 {
+  margin: 8px 0 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+}
+
+.what-if-timeline {
+  margin-top: 22px;
+}
+
+.what-if-step {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+  min-height: 72px;
+}
+
+.what-if-line-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.what-if-node {
+  position: relative;
+  z-index: 1;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.what-if-line {
+  position: absolute;
+  top: 27px;
+  bottom: -2px;
+  width: 1px;
+  background: var(--line);
+}
+
+.what-if-step strong {
+  display: block;
+  font-size: 15px;
+}
+
+.what-if-step span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.what-if-note {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 899px) {
+  .what-if {
+    margin-top: 48px;
+    padding: 0 16px;
+  }
+
+  .what-if-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .what-if-compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .what-if-controls {
+    grid-template-columns: 1fr;
+  }
+}
